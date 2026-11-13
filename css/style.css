@@ -38,6 +38,7 @@ h3 {
   text-transform: uppercase;
   letter-spacing: 0.02em;
   line-height: 1.1;
+  font-weight: 700; /* o Bootstrap deixa os títulos mais finos; voltamos ao negrito */
 }
 
 a {
@@ -424,7 +425,18 @@ video {
 /* Celular (até 600px): título menor e menu ocupando a largura toda */
 @media (max-width: 600px) {
   .abertura h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
+    max-width: none;
+  }
+
+  /* tabela da ficha mais compacta para caber a coluna Volume */
+  .ficha {
+    font-size: 0.85rem;
+  }
+
+  .ficha th,
+  .ficha td {
+    padding-right: 6px;
   }
 
   .botao-menu {
