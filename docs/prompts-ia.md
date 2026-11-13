@@ -27,8 +27,16 @@ nova e sem nenhum contexto do projeto. As respostas completas estão copiadas se
 
 ## 4. O que eu adaptei no código do prompt reforçado
 
+Primeira adaptação (Aula 13):
+
 - Tirei o `style="max-width: 24rem"` inline e passei para o `css/style.css` (regra do projeto: sem estilo inline).
 - Troquei a IIFE e as arrow functions por funções normais com nomes em português (`iniciarCronometro`, `tempoPorExtenso`).
 - Usei o visual do site (`cartao`, `botao-primario`, `botao-secundario`) no lugar de `card`/`btn-success`/`btn-warning`.
 - Corrigi o anúncio a cada 15 s: o original podia repetir o mesmo segundo. Agora guardo o último segundo anunciado em `ultimoAnuncio`.
 - Movi o JavaScript para o `js/script.js` (que já carrega com `defer`).
+
+Simplificação posterior (versão atual do site):
+
+- O site deixou de usar Bootstrap e de ter `aria-live`, `role` e `visually-hidden`. O cronômetro ficou só com `setInterval` de 1 em 1 segundo, `formata`, `mostrarTempo`, `iniciar`, `pausar` e `zerar`.
+- Os botões ficam sempre ativos (sem `disabled`).
+- O site roda só em tela de computador.
