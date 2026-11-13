@@ -199,6 +199,54 @@ video {
   padding-left: 20px;
 }
 
+/* ===== Formulário ===== */
+.formulario {
+  max-width: 560px;
+}
+
+/* label em cima, campo embaixo */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 0 18px;
+}
+
+.campo label {
+  font-weight: 600;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  font: inherit;
+  color: var(--tinta);
+  background-color: var(--branco);
+  border: 2px solid var(--tinta);
+  border-radius: 4px;
+  padding: 10px 12px;
+  width: 100%;
+}
+
+.campo textarea {
+  resize: vertical;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.botao {
+  font: inherit;
+  font-weight: 700;
+  border: 2px solid var(--tinta);
+  border-radius: 4px;
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
 /* ===== Rodapé ===== */
 .rodape {
   background-color: var(--papel-escuro);
