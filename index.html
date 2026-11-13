@@ -11,6 +11,10 @@
   <script src="js/script.js" defer></script>
 </head>
 <body>
+  <!-- a11y: antes, quem usa teclado passava pelo logo e pelo menu inteiro em toda página.
+       Agora o primeiro Tab mostra este link, que pula direto para o conteúdo -->
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
   <header class="topo">
     <a href="index.html" class="marca">
       <!-- Logo em SVG inline: uma barra com anilhas. O title deixa o desenho acessível -->
@@ -42,7 +46,7 @@
     </nav>
   </header>
 
-  <main class="conteudo">
+  <main class="conteudo" id="conteudo" tabindex="-1">
     <section class="secao abertura">
       <p class="sobretitulo">Ficha digital de academia</p>
       <h1>Seu treino de hoje, sem papel amassado</h1>
