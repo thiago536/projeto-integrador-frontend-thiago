@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meu Treino</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
 </head>
 <body>
   <header class="topo">
@@ -20,7 +21,16 @@
       </svg>
       Meu Treino
     </a>
-    <nav class="menu">
+    <!-- Botão do menu: só aparece no celular. aria-expanded avisa se o menu está aberto -->
+    <button class="botao-menu" type="button" aria-expanded="false" aria-controls="menu-principal">
+      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+        <rect y="3" width="20" height="2.5" fill="currentColor"/>
+        <rect y="9" width="20" height="2.5" fill="currentColor"/>
+        <rect y="15" width="20" height="2.5" fill="currentColor"/>
+      </svg>
+      Menu
+    </button>
+    <nav class="menu" id="menu-principal">
       <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="exercicios.html">Exercícios</a></li>

@@ -97,6 +97,39 @@ video {
   border-radius: 4px;
 }
 
+/* Estados do menu: hover muda o fundo, foco por teclado ganha contorno */
+.menu a:hover {
+  background-color: var(--destaque);
+  color: var(--branco);
+}
+
+.menu a:focus-visible,
+.marca:focus-visible,
+.botao-menu:focus-visible {
+  outline: 3px solid var(--papel);
+  outline-offset: 2px;
+}
+
+.botao-menu:hover {
+  background-color: var(--papel);
+  color: var(--tinta);
+}
+
+/* Botão hambúrguer: escondido no desktop */
+.botao-menu {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--papel);
+  border: 2px solid var(--papel);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 /* ===== Conteúdo ===== */
 .conteudo {
   max-width: 1080px;
@@ -184,12 +217,27 @@ video {
     font-size: 2rem;
   }
 
+  .botao-menu {
+    display: flex;
+  }
+
+  /* menu fica escondido até o botão ser clicado */
   .menu {
+    display: none;
     width: 100%;
   }
 
+  .menu.aberto {
+    display: block;
+  }
+
   .menu ul {
-    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .menu a {
+    padding: 12px;
+    border-top: 1px solid var(--tinta-suave);
   }
 }
 
