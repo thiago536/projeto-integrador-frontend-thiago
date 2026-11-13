@@ -147,9 +147,17 @@ video {
   color: var(--destaque);
 }
 
+/* grid: cards de exercício em colunas que se ajustam à largura */
 .grade-exercicios {
   list-style: none;
   padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.grade-exercicios .card {
+  height: 100%;
 }
 
 .ficha {
