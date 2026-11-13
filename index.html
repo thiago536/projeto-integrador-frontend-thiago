@@ -77,6 +77,25 @@
       </article>
     </section>
 
+    <!-- Cronômetro de descanso: gerado com IA (prompt reforçado) e adaptado ao projeto.
+         Ver docs/prompts-ia.md -->
+    <section class="secao" aria-labelledby="cron-titulo">
+      <h2 id="cron-titulo">Cronômetro de descanso</h2>
+      <div class="cartao cronometro text-center">
+        <!-- Número grande: escondido do leitor de tela para não ser lido a cada segundo -->
+        <p class="cron-display font-monospace" id="cron-display" aria-hidden="true">00:00</p>
+
+        <!-- Região viva: anuncia iniciar, pausar, zerar e o tempo a cada 15 segundos -->
+        <p class="visually-hidden" id="cron-status" role="status" aria-live="polite" aria-atomic="true"></p>
+
+        <div class="d-flex justify-content-center flex-wrap gap-2" role="group" aria-label="Controles do cronômetro">
+          <button type="button" class="botao botao-primario" id="btn-iniciar">Iniciar</button>
+          <button type="button" class="botao botao-secundario" id="btn-pausar" disabled>Pausar</button>
+          <button type="button" class="botao botao-secundario" id="btn-zerar" disabled>Zerar</button>
+        </div>
+      </div>
+    </section>
+
     <section class="secao">
       <h2>Ritmo do agachamento</h2>
       <p>Assista ao vídeo e acompanhe o ritmo: 1,5 segundo descendo e 1,5 segundo subindo.</p>

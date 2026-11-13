@@ -324,6 +324,25 @@ video {
   margin-top: 16px;
 }
 
+/* ===== Cronômetro de descanso ===== */
+.cronometro {
+  max-width: 24rem;
+}
+
+.cron-display {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 8px 0 24px;
+}
+
+/* Botão desabilitado fica apagado e sem cursor de clique */
+.botao:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
 /* ===== Formulário ===== */
 .formulario {
   max-width: 560px;

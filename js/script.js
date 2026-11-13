@@ -284,3 +284,106 @@ const formExercicio = document.querySelector("#form-exercicio");
 if (formExercicio) {
   formExercicio.addEventListener("submit", adicionarExercicio);
 }
+
+// ----- Cronômetro de descanso (index.html) -----
+// Base gerada com IA (prompt reforçado, ver docs/prompts-ia.md) e adaptada:
+// sem IIFE e sem arrow function, com nomes em português e no visual do site.
+
+const cronDisplay = document.querySelector("#cron-display");
+const cronStatus = document.querySelector("#cron-status");
+const btnIniciar = document.querySelector("#btn-iniciar");
+const btnPausar = document.querySelector("#btn-pausar");
+const btnZerar = document.querySelector("#btn-zerar");
+
+let tempoAcumulado = 0;    // milissegundos contados antes da última pausa
+let momentoInicio = 0;     // Date.now() de quando começou (ou voltou) a contar
+let intervaloCron = null;  // guarda o setInterval enquanto está rodando
+let ultimoAnuncio = 0;     // último segundo anunciado no aria-live
+
+// Tempo total: o acumulado mais o trecho que está rodando agora
+function tempoTotal() {
+  if (intervaloCron === null) {
+    return tempoAcumulado;
+  }
+  return tempoAcumulado + (Date.now() - momentoInicio);
+}
+
+// 75000 ms -> "01:15"
+function formatarTempo(ms) {
+  const segundos = Math.floor(ms / 1000);
+  const minutos = String(Math.floor(segundos / 60)).padStart(2, "0");
+  const resto = String(segundos % 60).padStart(2, "0");
+  return minutos + ":" + resto;
+}
+
+// 75000 ms -> "1 minuto e 15 segundos" (para o leitor de tela)
+function tempoPorExtenso(ms) {
+  const segundos = Math.floor(ms / 1000);
+  const minutos = Math.floor(segundos / 60);
+  const resto = segundos % 60;
+  let texto = "";
+  if (minutos > 0) {
+    texto = minutos + (minutos === 1 ? " minuto e " : " minutos e ");
+  }
+  return texto + resto + (resto === 1 ? " segundo" : " segundos");
+}
+
+// Atualiza a tela e anuncia o tempo a cada 15 segundos
+function atualizarCronometro() {
+  const ms = tempoTotal();
+  const segundos = Math.floor(ms / 1000);
+  cronDisplay.textContent = formatarTempo(ms);
+
+  if (segundos > 0 && segundos % 15 === 0 && segundos !== ultimoAnuncio) {
+    ultimoAnuncio = segundos;
+    cronStatus.textContent = tempoPorExtenso(ms);
+  }
+}
+
+function iniciarCronometro() {
+  if (intervaloCron !== null) {
+    return; // já está rodando
+  }
+  momentoInicio = Date.now();
+  intervaloCron = setInterval(atualizarCronometro, 200);
+  btnIniciar.disabled = true;
+  btnPausar.disabled = false;
+  btnZerar.disabled = false;
+  cronStatus.textContent = "Cronômetro iniciado";
+  btnPausar.focus(); // o foco não pode ficar num botão desabilitado
+}
+
+function pausarCronometro() {
+  if (intervaloCron === null) {
+    return;
+  }
+  tempoAcumulado = tempoTotal();
+  clearInterval(intervaloCron);
+  intervaloCron = null;
+  cronDisplay.textContent = formatarTempo(tempoAcumulado);
+  btnIniciar.disabled = false;
+  btnIniciar.textContent = "Continuar";
+  btnPausar.disabled = true;
+  cronStatus.textContent = "Pausado em " + tempoPorExtenso(tempoAcumulado);
+  btnIniciar.focus();
+}
+
+function zerarCronometro() {
+  clearInterval(intervaloCron);
+  intervaloCron = null;
+  tempoAcumulado = 0;
+  ultimoAnuncio = 0;
+  cronDisplay.textContent = "00:00";
+  btnIniciar.disabled = false;
+  btnIniciar.textContent = "Iniciar";
+  btnPausar.disabled = true;
+  btnZerar.disabled = true;
+  cronStatus.textContent = "Cronômetro zerado";
+  btnIniciar.focus();
+}
+
+if (cronDisplay && btnIniciar && btnPausar && btnZerar) {
+  btnIniciar.addEventListener("click", iniciarCronometro);
+  btnPausar.addEventListener("click", pausarCronometro);
+  btnZerar.addEventListener("click", zerarCronometro);
+}
