@@ -162,9 +162,7 @@ function criarCardExercicio(exercicio) {
   botaoFavorito.className = "botao-favorito";
   botaoFavorito.textContent = "Favorito";
   botaoFavorito.setAttribute("aria-pressed", favoritos.includes(exercicio.id));
-  botaoFavorito.addEventListener("click", function () {
-    alternarFavorito(exercicio.id, botaoFavorito);
-  });
+  botaoFavorito.dataset.id = exercicio.id; // guarda o id pra saber qual foi clicado
 
   card.appendChild(icone);
   card.appendChild(titulo);
@@ -183,6 +181,16 @@ function renderizarExercicios() {
   }
 }
 
+// Event delegation: UM único listener no <ul> trata o clique de todos os botões,
+// inclusive dos cards criados depois
+function tratarCliqueNaLista(evento) {
+  const botao = evento.target.closest(".botao-favorito");
+  if (botao) {
+    alternarFavorito(botao.dataset.id, botao);
+  }
+}
+
 if (listaExercicios) {
   renderizarExercicios();
+  listaExercicios.addEventListener("click", tratarCliqueNaLista);
 }
