@@ -37,10 +37,12 @@
       </svg>
       Menu
     </button>
-    <nav class="menu" id="menu-principal">
+    <!-- a11y: antes o menu não dizia em qual página a pessoa está.
+         Agora o link da página atual tem aria-current="page" (o leitor de tela fala "página atual") -->
+    <nav class="menu" id="menu-principal" aria-label="Principal">
       <ul>
         <li><a href="index.html">Início</a></li>
-        <li><a href="exercicios.html">Exercícios</a></li>
+        <li><a href="exercicios.html" aria-current="page">Exercícios</a></li>
         <li><a href="contato.html">Contato</a></li>
       </ul>
     </nav>

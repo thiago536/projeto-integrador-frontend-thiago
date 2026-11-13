@@ -123,6 +123,14 @@ video {
   border-radius: 4px;
 }
 
+/* Página atual: sublinhado grosso, para quem enxerga também saber onde está */
+.menu a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--destaque);
+}
+
 /* Estados do menu: hover muda o fundo, foco por teclado ganha contorno */
 .menu a:hover {
   background-color: var(--destaque);
