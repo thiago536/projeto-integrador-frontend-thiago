@@ -247,6 +247,28 @@ video {
   cursor: pointer;
 }
 
+/* Primário (Enviar): cheio e com sombra. Secundário (Limpar): só contorno */
+.botao-primario {
+  background-color: var(--destaque);
+  border-color: var(--destaque);
+  color: var(--branco);
+  box-shadow: 3px 3px 0 var(--tinta);
+}
+
+.botao-primario:hover {
+  background-color: var(--tinta);
+  border-color: var(--tinta);
+}
+
+.botao-secundario {
+  background-color: transparent;
+  color: var(--tinta);
+}
+
+.botao-secundario:hover {
+  background-color: var(--papel-escuro);
+}
+
 /* ===== Rodapé ===== */
 .rodape {
   background-color: var(--papel-escuro);
