@@ -4,88 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contato | Meu Treino</title>
-  <!-- antes o navegador pedia /favicon.ico, que não existia, e gerava erro 404 no console -->
   <link rel="icon" href="img/logo.svg" type="image/svg+xml">
-  <!-- Bootstrap 5 via CDN (vem antes do nosso CSS, assim o nosso tem a palavra final) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
   <script src="js/script.js" defer></script>
 </head>
 <body>
-  <!-- a11y: antes, quem usa teclado passava pelo logo e pelo menu inteiro em toda página.
-       Agora o primeiro Tab mostra este link, que pula direto para o conteúdo -->
-  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
-
   <header class="topo">
     <a href="index.html" class="marca">
-      <!-- Logo em SVG inline: uma barra com anilhas. O title deixa o desenho acessível -->
-      <svg class="logo" width="40" height="40" viewBox="0 0 40 40" role="img" aria-labelledby="logo-titulo">
-        <title id="logo-titulo">Logo do Meu Treino: barra com anilhas</title>
-        <rect x="1" y="13" width="5" height="14" rx="1" fill="currentColor"/>
-        <rect x="7" y="8" width="6" height="24" rx="1" fill="currentColor"/>
-        <rect x="13" y="18" width="14" height="4" fill="currentColor"/>
-        <rect x="27" y="8" width="6" height="24" rx="1" fill="currentColor"/>
-        <rect x="34" y="13" width="5" height="14" rx="1" fill="currentColor"/>
-      </svg>
+      <img src="img/logo.svg" alt="" width="40" height="40">
       Meu Treino
     </a>
-    <!-- Botão do menu: só aparece no celular. aria-expanded avisa se o menu está aberto -->
-    <button class="botao-menu" type="button" aria-expanded="false" aria-controls="menu-principal">
-      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-        <rect y="3" width="20" height="2.5" fill="currentColor"/>
-        <rect y="9" width="20" height="2.5" fill="currentColor"/>
-        <rect y="15" width="20" height="2.5" fill="currentColor"/>
-      </svg>
-      Menu
-    </button>
-    <!-- a11y: antes o menu não dizia em qual página a pessoa está.
-         Agora o link da página atual tem aria-current="page" (o leitor de tela fala "página atual") -->
-    <nav class="menu" id="menu-principal" aria-label="Principal">
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="exercicios.html">Exercícios</a></li>
-        <li><a href="contato.html" aria-current="page">Contato</a></li>
-      </ul>
+    <nav class="menu">
+      <a href="index.html">Início</a>
+      <a href="exercicios.html">Exercícios</a>
+      <a href="contato.html">Contato</a>
     </nav>
   </header>
 
-  <main class="conteudo" id="conteudo" tabindex="-1">
-    <section class="secao">
-      <h1>Fale com o personal</h1>
-      <p>Mande sua dúvida ou peça ajustes na sua ficha.</p>
+  <main class="conteudo">
+    <section>
+      <h1>Contato</h1>
+      <p>Fale com seu personal.</p>
 
-      <form class="formulario" action="#" method="post">
-        <p class="campo">
-          <label for="nome">Nome</label>
-          <input type="text" id="nome" name="nome" autocomplete="name" required>
-        </p>
-        <p class="campo">
-          <label for="email">E-mail</label>
-          <input type="email" id="email" name="email" autocomplete="email" required>
-        </p>
-        <p class="campo">
-          <label for="telefone">Telefone (opcional)</label>
-          <input type="tel" id="telefone" name="telefone" autocomplete="tel" placeholder="(11) 91234-5678">
-        </p>
-        <p class="campo">
-          <label for="objetivo">Objetivo</label>
-          <select id="objetivo" name="objetivo" required>
-            <option value="">Escolha uma opção</option>
-            <option value="hipertrofia">Ganhar massa muscular</option>
-            <option value="emagrecimento">Emagrecer</option>
-            <option value="condicionamento">Melhorar o condicionamento</option>
-            <option value="saude">Saúde e qualidade de vida</option>
-          </select>
-        </p>
-        <p class="campo">
-          <label for="mensagem">Mensagem</label>
-          <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
-        </p>
-        <p class="acoes">
-          <button class="botao botao-primario" type="submit">Enviar</button>
-          <button class="botao botao-secundario" type="reset">Limpar</button>
-        </p>
+      <form action="#" method="post">
+        <label>Nome</label>
+        <input type="text" name="nome" required>
+
+        <label>E-mail</label>
+        <input type="email" name="email" required>
+
+        <label>Telefone (opcional)</label>
+        <input type="tel" name="telefone" placeholder="(11) 91234-5678">
+
+        <label>Objetivo</label>
+        <select name="objetivo" required>
+          <option value="">Escolha</option>
+          <option value="hipertrofia">Ganhar massa</option>
+          <option value="emagrecimento">Emagrecer</option>
+          <option value="condicionamento">Condicionamento</option>
+          <option value="saude">Saúde</option>
+        </select>
+
+        <label>Mensagem</label>
+        <textarea name="mensagem" rows="5" required></textarea>
+
+        <button type="submit" class="primario">Enviar</button>
+        <button type="reset">Limpar</button>
       </form>
     </section>
   </main>
