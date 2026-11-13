@@ -109,6 +109,9 @@
       <video controls preload="metadata" width="640" height="360">
         <source src="media/agachamento.webm" type="video/webm">
         <source src="media/agachamento.mp4" type="video/mp4">
+        <!-- a11y: antes o vídeo não tinha legenda e o texto que aparece nele não chegava
+             a quem não enxerga a tela. Agora uma legenda (WebVTT) descreve o que é mostrado -->
+        <track kind="captions" src="media/agachamento-legenda.vtt" srclang="pt-BR" label="Português" default>
         Seu navegador não reproduz vídeo. <a href="media/agachamento.mp4">Baixe o vídeo do agachamento</a>.
       </video>
     </section>
