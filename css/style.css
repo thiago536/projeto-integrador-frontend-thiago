@@ -199,6 +199,85 @@ video {
   padding-left: 20px;
 }
 
+/* ===== Formulário ===== */
+.formulario {
+  max-width: 560px;
+}
+
+/* label em cima, campo embaixo */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 0 18px;
+}
+
+.campo label {
+  font-weight: 600;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  font: inherit;
+  color: var(--tinta);
+  background-color: var(--branco);
+  border: 2px solid var(--tinta);
+  border-radius: 4px;
+  padding: 10px 12px;
+  width: 100%;
+}
+
+.campo textarea {
+  resize: vertical;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.botao {
+  font: inherit;
+  font-weight: 700;
+  border: 2px solid var(--tinta);
+  border-radius: 4px;
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+/* Primário (Enviar): cheio e com sombra. Secundário (Limpar): só contorno */
+.botao-primario {
+  background-color: var(--destaque);
+  border-color: var(--destaque);
+  color: var(--branco);
+  box-shadow: 3px 3px 0 var(--tinta);
+}
+
+.botao-primario:hover {
+  background-color: var(--tinta);
+  border-color: var(--tinta);
+}
+
+.botao-secundario {
+  background-color: transparent;
+  color: var(--tinta);
+}
+
+.botao-secundario:hover {
+  background-color: var(--papel-escuro);
+}
+
+/* Foco visível ao navegar com Tab: contorno grosso no lugar do padrão */
+.campo input:focus-visible,
+.campo select:focus-visible,
+.campo textarea:focus-visible,
+.botao:focus-visible {
+  outline: 3px solid var(--destaque);
+  outline-offset: 2px;
+}
+
 /* ===== Rodapé ===== */
 .rodape {
   background-color: var(--papel-escuro);
