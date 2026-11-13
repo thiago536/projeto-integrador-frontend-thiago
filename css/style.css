@@ -193,10 +193,44 @@ video {
   height: 100%;
 }
 
+/* Tabela da ficha: números em fonte monoespaçada para alinhar */
+.tabela-rolagem {
+  overflow-x: auto;
+}
+
 .ficha {
-  font-family: var(--fonte-numero);
+  width: 100%;
+  border-collapse: collapse;
   font-size: 0.95rem;
-  padding-left: 20px;
+}
+
+.ficha caption {
+  text-align: left;
+  color: var(--tinta-suave);
+  font-size: 0.85rem;
+  padding-bottom: 8px;
+}
+
+.ficha th,
+.ficha td {
+  text-align: left;
+  padding: 8px 10px 8px 0;
+  border-bottom: 1px solid var(--papel-escuro);
+}
+
+.ficha td + td {
+  font-family: var(--fonte-numero);
+  white-space: nowrap;
+}
+
+.volume-total {
+  font-family: var(--fonte-numero);
+  margin: 16px 0 0;
+}
+
+.volume-total strong {
+  color: var(--destaque);
+  font-size: 1.3rem;
 }
 
 /* ===== Formulário ===== */

@@ -49,12 +49,28 @@
     <section class="secao">
       <h2>Ficha do dia</h2>
       <article class="card">
-        <h3>Treino A: pernas e costas</h3>
-        <ul class="ficha">
-          <li>Agachamento livre: 4 séries de 10 repetições</li>
-          <li>Supino reto: 4 séries de 8 repetições</li>
-          <li>Remada curvada: 3 séries de 12 repetições</li>
-        </ul>
+        <h3>Treino A: pernas, peito e costas</h3>
+        <div class="tabela-rolagem">
+          <table class="ficha" id="tabela-ficha">
+            <caption>Volume = séries × repetições × carga</caption>
+            <thead>
+              <tr>
+                <th scope="col">Exercício</th>
+                <th scope="col">Séries</th>
+                <th scope="col">Reps</th>
+                <th scope="col">Carga</th>
+                <th scope="col">Volume</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Agachamento livre</td><td>4</td><td>10</td><td>60 kg</td><td class="volume">–</td></tr>
+              <tr><td>Supino reto</td><td>4</td><td>8</td><td>40 kg</td><td class="volume">–</td></tr>
+              <tr><td>Remada curvada</td><td>3</td><td>12</td><td>35 kg</td><td class="volume">–</td></tr>
+              <tr><td>Leg press</td><td>4</td><td>12</td><td>120 kg</td><td class="volume">–</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="volume-total">Volume total do treino: <strong id="volume-total">–</strong></p>
       </article>
     </section>
 

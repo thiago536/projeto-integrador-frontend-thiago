@@ -39,3 +39,24 @@ function calcularVolumeTotal(treino) {
   }
   return total;
 }
+
+// Mostra o volume de cada exercício e o total na ficha do dia (só existe na home)
+function mostrarVolumeNaFicha() {
+  const celulasVolume = document.querySelectorAll("#tabela-ficha .volume");
+  const campoTotal = document.querySelector("#volume-total");
+
+  if (celulasVolume.length === 0 || !campoTotal) {
+    return;
+  }
+
+  for (let i = 0; i < treinoDeHoje.length; i++) {
+    const exercicio = treinoDeHoje[i];
+    const volume = calcularVolume(exercicio.series, exercicio.repeticoes, exercicio.carga);
+    celulasVolume[i].textContent = volume.toLocaleString("pt-BR") + " kg";
+  }
+
+  const total = calcularVolumeTotal(treinoDeHoje);
+  campoTotal.textContent = total.toLocaleString("pt-BR") + " kg";
+}
+
+mostrarVolumeNaFicha();
