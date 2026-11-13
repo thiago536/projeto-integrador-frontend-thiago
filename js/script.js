@@ -173,9 +173,11 @@ function criarCardExercicio(exercicio) {
   const botaoFavorito = document.createElement("button");
   botaoFavorito.type = "button";
   botaoFavorito.className = "botao-favorito";
-  botaoFavorito.textContent = "Favorito";
+  botaoFavorito.textContent = "Favoritar";
   // a11y: antes os 6 botões se chamavam só "Favorito" e o leitor de tela não dizia de qual
-  // exercício era. Agora o nome acessível inclui o exercício: "Favoritar Supino reto"
+  // exercício era. Agora o nome acessível inclui o exercício: "Favoritar Supino reto".
+  // O texto visível também virou "Favoritar", para o nome acessível começar com o que
+  // aparece na tela (quem usa comando de voz fala "clicar Favoritar")
   botaoFavorito.setAttribute("aria-label", "Favoritar " + exercicio.nome);
   botaoFavorito.setAttribute("aria-pressed", favoritos.includes(exercicio.id));
   botaoFavorito.dataset.id = exercicio.id; // guarda o id pra saber qual foi clicado
