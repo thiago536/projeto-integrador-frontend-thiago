@@ -51,6 +51,33 @@ video {
   height: auto;
 }
 
+/* ===== Link "pular para o conteúdo" =====
+   a11y: fica fora da tela e aparece só quando recebe foco pelo Tab */
+.pular-conteudo {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 1000;
+  background-color: var(--destaque);
+  color: var(--branco);
+  font-weight: 700;
+  padding: 12px 16px;
+  border-radius: 4px;
+}
+
+.pular-conteudo:focus {
+  top: 16px;
+  outline: 3px solid var(--tinta);
+  outline-offset: 2px;
+}
+
+/* o main recebe o foco quando a pessoa usa o link de pular:
+   um contorno discreto mostra para onde o foco foi */
+.conteudo:focus-visible {
+  outline: 3px dashed var(--destaque);
+  outline-offset: 4px;
+}
+
 /* ===== Cabeçalho ===== */
 .topo {
   background-color: var(--tinta);
@@ -96,6 +123,14 @@ video {
   display: block;
   padding: 8px 12px;
   border-radius: 4px;
+}
+
+/* Página atual: sublinhado grosso, para quem enxerga também saber onde está */
+.menu a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--destaque);
 }
 
 /* Estados do menu: hover muda o fundo, foco por teclado ganha contorno */
