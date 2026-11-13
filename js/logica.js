@@ -181,4 +181,18 @@ function analisarTreino() {
   registrarDescansos();
 }
 
+/*
+  Teste de mesa do laço principal (for...of), com volume mínimo = 2000:
+
+  Volta | exercício          | volume         | classe   | volumeTotal  | totalPesados | maiorExercicio
+  ------|--------------------|----------------|----------|--------------|--------------|------------------------
+    1   | Agachamento livre  | 4x10x60 = 2400 | Pesado   | 0 -> 2400    | 0 -> 1       | Agachamento livre (2400)
+    2   | Supino reto        | 4x8x40  = 1280 | Moderado | 2400 -> 3680 | 1            | Agachamento livre (2400)
+    3   | Remada curvada     | 3x12x35 = 1260 | Moderado | 3680 -> 4940 | 1            | Agachamento livre (2400)
+
+  Conferido no console: as 3 primeiras linhas do console.table mostram
+  2400 Pesado, 1280 Moderado e 1260 Moderado. No fim: total 11732 kg,
+  2 pesados de 6, maior volume Leg press (5760 kg).
+*/
+
 console.log("Mini-analisador pronto. Digite analisarTreino() para começar.");
