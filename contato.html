@@ -21,6 +21,39 @@
     <section>
       <h1>Fale com o personal</h1>
       <p>Mande sua dúvida ou peça ajustes na sua ficha.</p>
+
+      <form action="#" method="post">
+        <p>
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" autocomplete="name" required>
+        </p>
+        <p>
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </p>
+        <p>
+          <label for="telefone">Telefone (opcional)</label>
+          <input type="tel" id="telefone" name="telefone" autocomplete="tel" placeholder="(11) 91234-5678">
+        </p>
+        <p>
+          <label for="objetivo">Objetivo</label>
+          <select id="objetivo" name="objetivo" required>
+            <option value="">Escolha uma opção</option>
+            <option value="hipertrofia">Ganhar massa muscular</option>
+            <option value="emagrecimento">Emagrecer</option>
+            <option value="condicionamento">Melhorar o condicionamento</option>
+            <option value="saude">Saúde e qualidade de vida</option>
+          </select>
+        </p>
+        <p>
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+        </p>
+        <p>
+          <button type="submit">Enviar</button>
+          <button type="reset">Limpar</button>
+        </p>
+      </form>
     </section>
   </main>
 
