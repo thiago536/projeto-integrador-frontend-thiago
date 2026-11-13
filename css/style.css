@@ -71,9 +71,11 @@ video {
   outline-offset: 2px;
 }
 
-/* o main recebe foco pelo link, mas não precisa de contorno */
-.conteudo:focus {
-  outline: none;
+/* o main recebe o foco quando a pessoa usa o link de pular:
+   um contorno discreto mostra para onde o foco foi */
+.conteudo:focus-visible {
+  outline: 3px dashed var(--destaque);
+  outline-offset: 4px;
 }
 
 /* ===== Cabeçalho ===== */
