@@ -175,3 +175,39 @@ video {
   font-size: 0.9rem;
   border-top: 2px solid var(--tinta);
 }
+
+/* ===== Responsivo ===== */
+
+/* Celular (até 600px): título menor e menu ocupando a largura toda */
+@media (max-width: 600px) {
+  .abertura h1 {
+    font-size: 2rem;
+  }
+
+  .menu {
+    width: 100%;
+  }
+
+  .menu ul {
+    justify-content: space-between;
+  }
+}
+
+/* Desktop (a partir de 900px): mais respiro e 3 colunas fixas na grade */
+@media (min-width: 900px) {
+  .topo {
+    padding: 16px 32px;
+  }
+
+  .conteudo {
+    padding: 48px 32px 64px;
+  }
+
+  .abertura h1 {
+    font-size: 3.4rem;
+  }
+
+  .grade-exercicios {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
