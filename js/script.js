@@ -142,7 +142,7 @@ function criarCardExercicio(exercicio) {
   const item = document.createElement("li");
 
   const card = document.createElement("article");
-  card.className = "card card-exercicio";
+  card.className = "cartao cartao-exercicio";
 
   const icone = document.createElement("img");
   icone.className = "icone";

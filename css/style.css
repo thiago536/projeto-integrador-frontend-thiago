@@ -160,8 +160,8 @@ video {
   padding-bottom: 6px;
 }
 
-/* ===== Cards ===== */
-.card {
+/* ===== Cartões (o nome "card" já é usado pelo Bootstrap) ===== */
+.cartao {
   background-color: var(--branco);
   border: 2px solid var(--tinta);
   border-radius: 4px;
@@ -169,8 +169,8 @@ video {
   box-shadow: 4px 4px 0 var(--tinta);
 }
 
-.card h2,
-.card h3 {
+.cartao h2,
+.cartao h3 {
   margin-top: 0;
   border-bottom: none;
   padding-bottom: 0;
@@ -204,7 +204,7 @@ video {
   gap: 20px;
 }
 
-.grade-exercicios .card {
+.grade-exercicios .cartao {
   height: 100%;
 }
 
