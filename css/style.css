@@ -1,0 +1,156 @@
+/* ===== Meu Treino: folha de estilo principal ===== */
+
+/* Cores e fontes usadas no site inteiro */
+:root {
+  --papel: #f3efe6;
+  --papel-escuro: #e6e0d2;
+  --tinta: #1d1d1b;
+  --tinta-suave: #55524b;
+  --destaque: #b83a12;
+  --branco: #ffffff;
+  --fonte-texto: system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  --fonte-titulo: "Arial Narrow", "Roboto Condensed", "Helvetica Neue", Arial, sans-serif;
+  --fonte-numero: ui-monospace, Consolas, "Courier New", monospace;
+}
+
+/* Largura e altura passam a contar padding e borda */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Base da página */
+body {
+  margin: 0;
+  background-color: var(--papel);
+  color: var(--tinta);
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Títulos condensados e em caixa alta, estilo ficha de academia */
+h1,
+h2,
+h3 {
+  font-family: var(--fonte-titulo);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+a {
+  color: var(--destaque);
+}
+
+/* Vídeo nunca passa da largura da tela */
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== Cabeçalho ===== */
+.topo {
+  background-color: var(--tinta);
+  color: var(--papel);
+  padding: 12px 16px;
+  border-bottom: 6px solid var(--destaque);
+}
+
+.marca {
+  color: var(--papel);
+  font-family: var(--fonte-titulo);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.logo {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: var(--papel);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ===== Conteúdo ===== */
+.conteudo {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.secao {
+  margin-bottom: 48px;
+}
+
+.abertura h1 {
+  font-size: 2.6rem;
+  margin: 0 0 12px;
+  max-width: 14ch;
+}
+
+.sobretitulo {
+  font-family: var(--fonte-numero);
+  font-size: 0.85rem;
+  color: var(--destaque);
+  margin: 0 0 8px;
+}
+
+.secao h2 {
+  font-size: 1.6rem;
+  border-bottom: 2px solid var(--tinta);
+  padding-bottom: 6px;
+}
+
+/* ===== Cards ===== */
+.card {
+  background-color: var(--branco);
+  border: 2px solid var(--tinta);
+  border-radius: 4px;
+  padding: 16px;
+  box-shadow: 4px 4px 0 var(--tinta);
+}
+
+.card h2,
+.card h3 {
+  margin-top: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.icone {
+  color: var(--destaque);
+}
+
+.grade-exercicios {
+  list-style: none;
+  padding: 0;
+}
+
+.ficha {
+  font-family: var(--fonte-numero);
+  font-size: 0.95rem;
+  padding-left: 20px;
+}
+
+/* ===== Rodapé ===== */
+.rodape {
+  background-color: var(--papel-escuro);
+  color: var(--tinta-suave);
+  text-align: center;
+  padding: 16px;
+  font-size: 0.9rem;
+  border-top: 2px solid var(--tinta);
+}

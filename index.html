@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meu Treino</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
+  <header class="topo">
     <a href="index.html" class="marca">
       <!-- Logo em SVG inline: uma barra com anilhas. O title deixa o desenho acessível -->
       <svg class="logo" width="40" height="40" viewBox="0 0 40 40" role="img" aria-labelledby="logo-titulo">
@@ -19,7 +20,7 @@
       </svg>
       Meu Treino
     </a>
-    <nav>
+    <nav class="menu">
       <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="exercicios.html">Exercícios</a></li>
@@ -28,17 +29,18 @@
     </nav>
   </header>
 
-  <main>
-    <section>
+  <main class="conteudo">
+    <section class="secao abertura">
+      <p class="sobretitulo">Ficha digital de academia</p>
       <h1>Seu treino de hoje, sem papel amassado</h1>
       <p>Organize seus treinos de academia: veja a ficha do dia, consulte exercícios e fale com seu personal.</p>
     </section>
 
-    <section>
+    <section class="secao">
       <h2>Ficha do dia</h2>
-      <article>
+      <article class="card">
         <h3>Treino A: pernas e costas</h3>
-        <ul>
+        <ul class="ficha">
           <li>Agachamento livre: 4 séries de 10 repetições</li>
           <li>Supino reto: 4 séries de 8 repetições</li>
           <li>Remada curvada: 3 séries de 12 repetições</li>
@@ -46,7 +48,7 @@
       </article>
     </section>
 
-    <section>
+    <section class="secao">
       <h2>Ritmo do agachamento</h2>
       <p>Assista ao vídeo e acompanhe o ritmo: 1,5 segundo descendo e 1,5 segundo subindo.</p>
       <!-- preload="metadata": baixa só a duração e o tamanho, o vídeo carrega quando der play -->
@@ -57,7 +59,7 @@
       </video>
     </section>
 
-    <section>
+    <section class="secao">
       <h2>Bipe do descanso</h2>
       <p>Toque o bipe para marcar o fim do intervalo entre as séries.</p>
       <!-- preload="none": o áudio só é baixado quando a pessoa clicar em play -->
@@ -69,7 +71,7 @@
     </section>
   </main>
 
-  <footer>
+  <footer class="rodape">
     <p>Meu Treino · Projeto Integrador de Front-End · 2026</p>
   </footer>
 </body>
