@@ -60,3 +60,79 @@ function mostrarVolumeNaFicha() {
 }
 
 mostrarVolumeNaFicha();
+
+// ----- Catálogo de exercícios (página exercicios.html) -----
+
+// Exercícios que já vêm no site
+const catalogoExercicios = [
+  { id: "agachamento", nome: "Agachamento livre", grupo: "Pernas", descricao: "Trabalha quadríceps e glúteos." },
+  { id: "supino", nome: "Supino reto", grupo: "Peito", descricao: "Trabalha peitoral, ombro e tríceps." },
+  { id: "remada", nome: "Remada curvada", grupo: "Costas", descricao: "Trabalha dorsais e bíceps." },
+  { id: "leg-press", nome: "Leg press", grupo: "Pernas", descricao: "Quadríceps forte sem carregar a lombar." },
+  { id: "desenvolvimento", nome: "Desenvolvimento com halteres", grupo: "Ombros", descricao: "Trabalha deltoides e tríceps." },
+  { id: "rosca", nome: "Rosca direta", grupo: "Braços", descricao: "Isola o bíceps." }
+];
+
+const listaExercicios = document.querySelector("#lista-exercicios");
+
+// Escolhe o arquivo de ícone de acordo com o grupo muscular
+function iconeDoGrupo(grupo) {
+  switch (grupo) {
+    case "Pernas":
+      return "img/icone-pernas.svg";
+    case "Peito":
+      return "img/icone-peito.svg";
+    case "Costas":
+      return "img/icone-costas.svg";
+    case "Ombros":
+      return "img/icone-ombros.svg";
+    case "Braços":
+      return "img/icone-bracos.svg";
+    default:
+      return "img/icone-geral.svg";
+  }
+}
+
+// Cria o <li> de um exercício. Todo texto entra com textContent (seguro)
+function criarCardExercicio(exercicio) {
+  const item = document.createElement("li");
+
+  const card = document.createElement("article");
+  card.className = "card card-exercicio";
+
+  const icone = document.createElement("img");
+  icone.className = "icone";
+  icone.src = iconeDoGrupo(exercicio.grupo);
+  icone.alt = ""; // decorativo: o grupo já aparece escrito no card
+  icone.width = 32;
+  icone.height = 32;
+
+  const titulo = document.createElement("h2");
+  titulo.textContent = exercicio.nome;
+
+  const grupo = document.createElement("p");
+  grupo.className = "etiqueta";
+  grupo.textContent = exercicio.grupo;
+
+  const descricao = document.createElement("p");
+  descricao.textContent = exercicio.descricao;
+
+  card.appendChild(icone);
+  card.appendChild(titulo);
+  card.appendChild(grupo);
+  card.appendChild(descricao);
+  item.appendChild(card);
+  return item;
+}
+
+// Limpa a lista e desenha todos os exercícios do array
+function renderizarExercicios() {
+  listaExercicios.textContent = "";
+  for (const exercicio of catalogoExercicios) {
+    listaExercicios.appendChild(criarCardExercicio(exercicio));
+  }
+}
+
+if (listaExercicios) {
+  renderizarExercicios();
+}

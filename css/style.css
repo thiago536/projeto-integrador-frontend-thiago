@@ -178,6 +178,21 @@ video {
 
 .icone {
   color: var(--destaque);
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Etiqueta do grupo muscular nos cards */
+.etiqueta {
+  display: inline-block;
+  font-family: var(--fonte-numero);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  background-color: var(--tinta);
+  color: var(--papel);
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin: 0;
 }
 
 /* grid: cards de exercício em colunas que se ajustam à largura */
