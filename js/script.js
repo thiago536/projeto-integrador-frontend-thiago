@@ -174,6 +174,9 @@ function criarCardExercicio(exercicio) {
   botaoFavorito.type = "button";
   botaoFavorito.className = "botao-favorito";
   botaoFavorito.textContent = "Favorito";
+  // a11y: antes os 6 botões se chamavam só "Favorito" e o leitor de tela não dizia de qual
+  // exercício era. Agora o nome acessível inclui o exercício: "Favoritar Supino reto"
+  botaoFavorito.setAttribute("aria-label", "Favoritar " + exercicio.nome);
   botaoFavorito.setAttribute("aria-pressed", favoritos.includes(exercicio.id));
   botaoFavorito.dataset.id = exercicio.id; // guarda o id pra saber qual foi clicado
 
@@ -186,6 +189,8 @@ function criarCardExercicio(exercicio) {
   botaoDetalhes.type = "button";
   botaoDetalhes.className = "botao-detalhes";
   botaoDetalhes.textContent = "Detalhes";
+  // a11y: mesmo problema do favorito. Agora é "Detalhes de Supino reto"
+  botaoDetalhes.setAttribute("aria-label", "Detalhes de " + exercicio.nome);
   botaoDetalhes.dataset.id = exercicio.id;
   botaoDetalhes.setAttribute("data-bs-toggle", "modal");
   botaoDetalhes.setAttribute("data-bs-target", "#modal-exercicio");
