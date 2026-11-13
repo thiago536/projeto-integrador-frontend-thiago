@@ -146,6 +146,8 @@ function iconeDoGrupo(grupo) {
 // Cria o <li> de um exercício. Todo texto entra com textContent (seguro)
 function criarCardExercicio(exercicio) {
   const item = document.createElement("li");
+  // 1 coluna no celular, 2 no tablet (md) e 3 no desktop (lg)
+  item.className = "col-12 col-md-6 col-lg-4";
 
   const card = document.createElement("article");
   card.className = "cartao cartao-exercicio";

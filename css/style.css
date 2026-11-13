@@ -195,13 +195,10 @@ video {
   margin: 0;
 }
 
-/* grid: cards de exercício em colunas que se ajustam à largura */
+/* As colunas da grade agora vêm do Bootstrap (row + col-12 col-md-6 col-lg-4) */
 .grade-exercicios {
   list-style: none;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 20px;
 }
 
 .grade-exercicios .cartao {
@@ -466,9 +463,5 @@ video {
 
   .abertura h1 {
     font-size: 3.4rem;
-  }
-
-  .grade-exercicios {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
