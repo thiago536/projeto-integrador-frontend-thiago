@@ -350,6 +350,13 @@ video {
   background-color: var(--papel-escuro);
 }
 
+/* Mensagem de retorno do formulário */
+.aviso {
+  font-weight: 600;
+  color: var(--destaque);
+  min-height: 1.6em;
+}
+
 /* Foco visível ao navegar com Tab: contorno grosso no lugar do padrão */
 .campo input:focus-visible,
 .campo select:focus-visible,

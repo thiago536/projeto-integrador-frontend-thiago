@@ -98,6 +98,11 @@ function salvarLista(chave, lista) {
   }
 }
 
+const CHAVE_PERSONALIZADOS = "meuTreino.personalizados";
+
+// Exercícios criados pela pessoa no formulário
+let exerciciosPersonalizados = lerLista(CHAVE_PERSONALIZADOS);
+
 // ids dos exercícios favoritos (continuam salvos depois do F5)
 let favoritos = lerLista(CHAVE_FAVORITOS);
 
@@ -176,9 +181,40 @@ function criarCardExercicio(exercicio) {
 // Limpa a lista e desenha todos os exercícios do array
 function renderizarExercicios() {
   listaExercicios.textContent = "";
-  for (const exercicio of catalogoExercicios) {
+  const todos = catalogoExercicios.concat(exerciciosPersonalizados);
+  for (const exercicio of todos) {
     listaExercicios.appendChild(criarCardExercicio(exercicio));
   }
+}
+
+// Lê o formulário, cria o exercício novo, salva e redesenha a lista
+function adicionarExercicio(evento) {
+  evento.preventDefault(); // não recarrega a página
+
+  const formulario = evento.target;
+  const nome = formulario.nome.value.trim();
+  const aviso = document.querySelector("#aviso-exercicio");
+
+  if (nome === "") {
+    aviso.textContent = "Digite o nome do exercício.";
+    return;
+  }
+
+  const descricao = formulario.descricao.value.trim();
+  const novoExercicio = {
+    id: "personalizado-" + Date.now(),
+    nome: nome,
+    grupo: formulario.grupo.value,
+    descricao: descricao === "" ? "Exercício personalizado." : descricao
+  };
+
+  exerciciosPersonalizados.push(novoExercicio);
+  salvarLista(CHAVE_PERSONALIZADOS, exerciciosPersonalizados);
+  renderizarExercicios();
+
+  // textContent: o que a pessoa digitou aparece como texto, nunca como HTML
+  aviso.textContent = `"${nome}" foi adicionado à lista.`;
+  formulario.reset();
 }
 
 // Event delegation: UM único listener no <ul> trata o clique de todos os botões,
@@ -193,4 +229,9 @@ function tratarCliqueNaLista(evento) {
 if (listaExercicios) {
   renderizarExercicios();
   listaExercicios.addEventListener("click", tratarCliqueNaLista);
+}
+
+const formExercicio = document.querySelector("#form-exercicio");
+if (formExercicio) {
+  formExercicio.addEventListener("submit", adicionarExercicio);
 }

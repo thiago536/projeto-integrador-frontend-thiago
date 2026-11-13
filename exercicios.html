@@ -46,6 +46,37 @@
       <!-- A lista é montada pelo JavaScript a partir de um array (js/script.js) -->
       <ul class="grade-exercicios" id="lista-exercicios"></ul>
     </section>
+
+    <section class="secao">
+      <h2>Adicionar exercício</h2>
+      <p>Faltou algum? Cadastre o seu. Ele fica salvo neste navegador.</p>
+      <form class="formulario" id="form-exercicio">
+        <p class="campo">
+          <label for="novo-nome">Nome do exercício</label>
+          <input type="text" id="novo-nome" name="nome" maxlength="40" required>
+        </p>
+        <p class="campo">
+          <label for="novo-grupo">Grupo muscular</label>
+          <select id="novo-grupo" name="grupo" required>
+            <option value="Pernas">Pernas</option>
+            <option value="Peito">Peito</option>
+            <option value="Costas">Costas</option>
+            <option value="Ombros">Ombros</option>
+            <option value="Braços">Braços</option>
+            <option value="Outro">Outro</option>
+          </select>
+        </p>
+        <p class="campo">
+          <label for="nova-descricao">Descrição curta (opcional)</label>
+          <input type="text" id="nova-descricao" name="descricao" maxlength="80">
+        </p>
+        <p class="acoes">
+          <button class="botao botao-primario" type="submit">Adicionar</button>
+        </p>
+        <!-- role="status": leitores de tela anunciam a mensagem quando ela muda -->
+        <p class="aviso" id="aviso-exercicio" role="status"></p>
+      </form>
+    </section>
   </main>
 
   <footer class="rodape">
