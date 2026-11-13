@@ -206,6 +206,9 @@ video {
 
 .grade-exercicios .cartao {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 /* Tabela da ficha: números em fonte monoespaçada para alinhar */
@@ -278,6 +281,49 @@ video {
 .botao-favorito:focus-visible {
   outline: 3px solid var(--destaque);
   outline-offset: 2px;
+}
+
+/* Linha com os botões do cartão, sempre no rodapé do cartão */
+.acoes-cartao {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.botao-detalhes {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background-color: transparent;
+  color: var(--destaque);
+  border: none;
+  text-decoration: underline;
+  padding: 6px 4px;
+  cursor: pointer;
+}
+
+.botao-detalhes:focus-visible {
+  outline: 3px solid var(--destaque);
+  outline-offset: 2px;
+}
+
+/* Modal do Bootstrap com a cara do site */
+.modal-content {
+  background-color: var(--papel);
+  border: 2px solid var(--tinta);
+  border-radius: 4px;
+  box-shadow: 6px 6px 0 var(--tinta);
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.modal-body h3 {
+  font-size: 1.1rem;
+  margin-top: 16px;
 }
 
 /* ===== Formulário ===== */

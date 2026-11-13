@@ -82,6 +82,27 @@
     </section>
   </main>
 
+  <!-- Modal do Bootstrap: o conteúdo é preenchido pelo JavaScript ao abrir -->
+  <div class="modal fade" id="modal-exercicio" tabindex="-1" aria-labelledby="modal-titulo" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modal-titulo">Exercício</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <p class="etiqueta" id="modal-grupo"></p>
+          <p id="modal-descricao"></p>
+          <h3>Como executar</h3>
+          <p id="modal-execucao"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="botao botao-secundario" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="rodape">
     <p>Meu Treino · Projeto Integrador de Front-End · 2026</p>
   </footer>
