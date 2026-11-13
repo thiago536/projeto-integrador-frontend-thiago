@@ -13,6 +13,13 @@
   --fonte-numero: ui-monospace, Consolas, "Courier New", monospace;
 }
 
+/* Largura e altura passam a contar padding e borda */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* Base da página */
 body {
   margin: 0;
