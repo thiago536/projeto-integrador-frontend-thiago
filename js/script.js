@@ -74,6 +74,45 @@ const catalogoExercicios = [
 ];
 
 const listaExercicios = document.querySelector("#lista-exercicios");
+const CHAVE_FAVORITOS = "meuTreino.favoritos";
+
+// Lê uma lista salva no localStorage. Se não houver nada (ou der erro), devolve lista vazia
+function lerLista(chave) {
+  try {
+    const texto = localStorage.getItem(chave);
+    if (texto === null) {
+      return [];
+    }
+    return JSON.parse(texto);
+  } catch (erro) {
+    return [];
+  }
+}
+
+// Salva uma lista no localStorage como texto JSON
+function salvarLista(chave, lista) {
+  try {
+    localStorage.setItem(chave, JSON.stringify(lista));
+  } catch (erro) {
+    console.warn("Não foi possível salvar no navegador.");
+  }
+}
+
+// ids dos exercícios favoritos (continuam salvos depois do F5)
+let favoritos = lerLista(CHAVE_FAVORITOS);
+
+// Marca ou desmarca um exercício como favorito e salva
+function alternarFavorito(id, botao) {
+  if (favoritos.includes(id)) {
+    favoritos = favoritos.filter(function (favorito) {
+      return favorito !== id;
+    });
+  } else {
+    favoritos.push(id);
+  }
+  salvarLista(CHAVE_FAVORITOS, favoritos);
+  botao.setAttribute("aria-pressed", favoritos.includes(id));
+}
 
 // Escolhe o arquivo de ícone de acordo com o grupo muscular
 function iconeDoGrupo(grupo) {
@@ -117,10 +156,21 @@ function criarCardExercicio(exercicio) {
   const descricao = document.createElement("p");
   descricao.textContent = exercicio.descricao;
 
+  // Botão de favoritar: aria-pressed diz se está marcado
+  const botaoFavorito = document.createElement("button");
+  botaoFavorito.type = "button";
+  botaoFavorito.className = "botao-favorito";
+  botaoFavorito.textContent = "Favorito";
+  botaoFavorito.setAttribute("aria-pressed", favoritos.includes(exercicio.id));
+  botaoFavorito.addEventListener("click", function () {
+    alternarFavorito(exercicio.id, botaoFavorito);
+  });
+
   card.appendChild(icone);
   card.appendChild(titulo);
   card.appendChild(grupo);
   card.appendChild(descricao);
+  card.appendChild(botaoFavorito);
   item.appendChild(card);
   return item;
 }

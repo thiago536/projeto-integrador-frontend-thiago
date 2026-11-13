@@ -248,6 +248,38 @@ video {
   font-size: 1.3rem;
 }
 
+/* Botão de favoritar: estrela vazia ou cheia conforme o aria-pressed */
+.botao-favorito {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background-color: transparent;
+  color: var(--tinta);
+  border: 2px solid var(--tinta);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+}
+
+.botao-favorito::before {
+  content: "☆ ";
+}
+
+.botao-favorito[aria-pressed="true"] {
+  background-color: var(--destaque);
+  border-color: var(--destaque);
+  color: var(--branco);
+}
+
+.botao-favorito[aria-pressed="true"]::before {
+  content: "★ ";
+}
+
+.botao-favorito:focus-visible {
+  outline: 3px solid var(--destaque);
+  outline-offset: 2px;
+}
+
 /* ===== Formulário ===== */
 .formulario {
   max-width: 560px;
