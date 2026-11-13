@@ -56,6 +56,12 @@ video {
   color: var(--papel);
   padding: 12px 16px;
   border-bottom: 6px solid var(--destaque);
+  /* flexbox: logo de um lado, menu do outro */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .marca {
@@ -65,10 +71,11 @@ video {
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 
 .logo {
-  vertical-align: middle;
   margin-right: 8px;
 }
 
@@ -76,12 +83,18 @@ video {
   list-style: none;
   margin: 0;
   padding: 0;
+  /* itens do menu lado a lado */
+  display: flex;
+  gap: 4px;
 }
 
 .menu a {
   color: var(--papel);
   text-decoration: none;
   font-weight: 600;
+  display: block;
+  padding: 8px 12px;
+  border-radius: 4px;
 }
 
 /* ===== Conteúdo ===== */
@@ -134,9 +147,17 @@ video {
   color: var(--destaque);
 }
 
+/* grid: cards de exercício em colunas que se ajustam à largura */
 .grade-exercicios {
   list-style: none;
   padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.grade-exercicios .card {
+  height: 100%;
 }
 
 .ficha {
@@ -153,4 +174,40 @@ video {
   padding: 16px;
   font-size: 0.9rem;
   border-top: 2px solid var(--tinta);
+}
+
+/* ===== Responsivo ===== */
+
+/* Celular (até 600px): título menor e menu ocupando a largura toda */
+@media (max-width: 600px) {
+  .abertura h1 {
+    font-size: 2rem;
+  }
+
+  .menu {
+    width: 100%;
+  }
+
+  .menu ul {
+    justify-content: space-between;
+  }
+}
+
+/* Desktop (a partir de 900px): mais respiro e 3 colunas fixas na grade */
+@media (min-width: 900px) {
+  .topo {
+    padding: 16px 32px;
+  }
+
+  .conteudo {
+    padding: 48px 32px 64px;
+  }
+
+  .abertura h1 {
+    font-size: 3.4rem;
+  }
+
+  .grade-exercicios {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
