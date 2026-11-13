@@ -1,0 +1,44 @@
+/* ===== Meu Treino: folha de estilo principal ===== */
+
+/* Cores e fontes usadas no site inteiro */
+:root {
+  --papel: #f3efe6;
+  --papel-escuro: #e6e0d2;
+  --tinta: #1d1d1b;
+  --tinta-suave: #55524b;
+  --destaque: #b83a12;
+  --branco: #ffffff;
+  --fonte-texto: system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  --fonte-titulo: "Arial Narrow", "Roboto Condensed", "Helvetica Neue", Arial, sans-serif;
+  --fonte-numero: ui-monospace, Consolas, "Courier New", monospace;
+}
+
+/* Base da página */
+body {
+  margin: 0;
+  background-color: var(--papel);
+  color: var(--tinta);
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Títulos condensados e em caixa alta, estilo ficha de academia */
+h1,
+h2,
+h3 {
+  font-family: var(--fonte-titulo);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+a {
+  color: var(--destaque);
+}
+
+/* Vídeo nunca passa da largura da tela */
+video {
+  max-width: 100%;
+  height: auto;
+}
