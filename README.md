@@ -12,3 +12,10 @@ Projeto Integrador da disciplina Desenvolvimento Front-End para Web (Cruzeiro do
 ## Site publicado
 
 🔗 https://thiago536.github.io/projeto-integrador-frontend-thiago/
+
+## Histórico do projeto
+
+Comecei o Projeto Integrador em 31/08/2026 com outro tema, um dashboard de finanças pessoais,
+no repositório [projeto-integrador-frontend-thiagooliveira](https://github.com/thiago536/projeto-integrador-frontend-thiagooliveira).
+Cheguei até o início da barra lateral (último commit em 09/09/2026) e desisti desse tema.
+Recomecei do zero com o **Meu Treino** em 13/11/2026, neste repositório, refazendo as entregas aula por aula (um PR por aula).
