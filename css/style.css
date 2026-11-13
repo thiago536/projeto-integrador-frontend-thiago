@@ -178,6 +178,21 @@ video {
 
 .icone {
   color: var(--destaque);
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Etiqueta do grupo muscular nos cards */
+.etiqueta {
+  display: inline-block;
+  font-family: var(--fonte-numero);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  background-color: var(--tinta);
+  color: var(--papel);
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin: 0;
 }
 
 /* grid: cards de exercício em colunas que se ajustam à largura */
@@ -231,6 +246,38 @@ video {
 .volume-total strong {
   color: var(--destaque);
   font-size: 1.3rem;
+}
+
+/* Botão de favoritar: estrela vazia ou cheia conforme o aria-pressed */
+.botao-favorito {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background-color: transparent;
+  color: var(--tinta);
+  border: 2px solid var(--tinta);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+}
+
+.botao-favorito::before {
+  content: "☆ ";
+}
+
+.botao-favorito[aria-pressed="true"] {
+  background-color: var(--destaque);
+  border-color: var(--destaque);
+  color: var(--branco);
+}
+
+.botao-favorito[aria-pressed="true"]::before {
+  content: "★ ";
+}
+
+.botao-favorito:focus-visible {
+  outline: 3px solid var(--destaque);
+  outline-offset: 2px;
 }
 
 /* ===== Formulário ===== */
@@ -301,6 +348,13 @@ video {
 
 .botao-secundario:hover {
   background-color: var(--papel-escuro);
+}
+
+/* Mensagem de retorno do formulário */
+.aviso {
+  font-weight: 600;
+  color: var(--destaque);
+  min-height: 1.6em;
 }
 
 /* Foco visível ao navegar com Tab: contorno grosso no lugar do padrão */

@@ -43,41 +43,39 @@
     <section class="secao">
       <h1>Exercícios</h1>
       <p>Catálogo com os exercícios que mais aparecem nas fichas.</p>
-      <ul class="grade-exercicios">
-        <li>
-          <article class="card">
-            <!-- ícone de pernas (decorativo) -->
-            <svg class="icone" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-              <polyline points="10,4 10,16 20,22 20,28" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              <line x1="16" y1="28" x2="24" y2="28" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-            <h2>Agachamento livre</h2>
-            <p>Pernas · trabalha quadríceps e glúteos.</p>
-          </article>
-        </li>
-        <li>
-          <article class="card">
-            <!-- ícone de peito (decorativo) -->
-            <svg class="icone" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-              <path d="M4 10 Q10 6 16 10 Q22 6 28 10 L26 20 Q16 26 6 20 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-              <line x1="16" y1="10" x2="16" y2="22" stroke="currentColor" stroke-width="2"/>
-            </svg>
-            <h2>Supino reto</h2>
-            <p>Peito · trabalha peitoral, ombro e tríceps.</p>
-          </article>
-        </li>
-        <li>
-          <article class="card">
-            <!-- ícone de costas (decorativo) -->
-            <svg class="icone" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-              <path d="M5 6 L16 28 L27 6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              <line x1="10" y1="6" x2="22" y2="6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-            <h2>Remada curvada</h2>
-            <p>Costas · trabalha dorsais e bíceps.</p>
-          </article>
-        </li>
-      </ul>
+      <!-- A lista é montada pelo JavaScript a partir de um array (js/script.js) -->
+      <ul class="grade-exercicios" id="lista-exercicios"></ul>
+    </section>
+
+    <section class="secao">
+      <h2>Adicionar exercício</h2>
+      <p>Faltou algum? Cadastre o seu. Ele fica salvo neste navegador.</p>
+      <form class="formulario" id="form-exercicio">
+        <p class="campo">
+          <label for="novo-nome">Nome do exercício</label>
+          <input type="text" id="novo-nome" name="nome" maxlength="40" required>
+        </p>
+        <p class="campo">
+          <label for="novo-grupo">Grupo muscular</label>
+          <select id="novo-grupo" name="grupo" required>
+            <option value="Pernas">Pernas</option>
+            <option value="Peito">Peito</option>
+            <option value="Costas">Costas</option>
+            <option value="Ombros">Ombros</option>
+            <option value="Braços">Braços</option>
+            <option value="Outro">Outro</option>
+          </select>
+        </p>
+        <p class="campo">
+          <label for="nova-descricao">Descrição curta (opcional)</label>
+          <input type="text" id="nova-descricao" name="descricao" maxlength="80">
+        </p>
+        <p class="acoes">
+          <button class="botao botao-primario" type="submit">Adicionar</button>
+        </p>
+        <!-- role="status": leitores de tela anunciam a mensagem quando ela muda -->
+        <p class="aviso" id="aviso-exercicio" role="status"></p>
+      </form>
     </section>
   </main>
 
