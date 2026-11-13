@@ -37,6 +37,7 @@ Primeira adaptação (Aula 13):
 
 Simplificação posterior (versão atual do site):
 
-- O site deixou de usar Bootstrap e de ter `aria-live`, `role` e `visually-hidden`. O cronômetro ficou só com `setInterval` de 1 em 1 segundo, `formata`, `mostrarTempo`, `iniciar`, `pausar` e `zerar`.
+- Tirei do cronômetro o `aria-live`, o `role` e a classe `visually-hidden`. Ficou só com `setInterval` de 1 em 1 segundo, `formata`, `mostrarTempo`, `iniciar`, `pausar` e `zerar`.
 - Os botões ficam sempre ativos (sem `disabled`).
 - O site roda só em tela de computador.
+- O Bootstrap continua no site (CDN), para as grades e o modal da página de exercícios.

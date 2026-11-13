@@ -114,6 +114,10 @@ function salvarLista(chave, lista) {
 let favoritos = lerLista(CHAVE_FAVORITOS);
 let novos = lerLista(CHAVE_NOVOS);
 
+function ehFavorito(id) {
+  return favoritos.indexOf(id) !== -1;
+}
+
 function alternarFavorito(id) {
   const pos = favoritos.indexOf(id);
   if (pos === -1) {
@@ -124,7 +128,11 @@ function alternarFavorito(id) {
   salvarLista(CHAVE_FAVORITOS, favoritos);
 }
 
+// Cria o cartão de um exercício. Texto entra com textContent
 function criarCard(exercicio) {
+  const coluna = document.createElement("div");
+  coluna.className = "col-12 col-md-6 col-lg-4";
+
   const card = document.createElement("div");
   card.className = "cartao";
 
@@ -144,35 +152,37 @@ function criarCard(exercicio) {
   const descricao = document.createElement("p");
   descricao.textContent = exercicio.descricao;
 
-  const detalhes = document.createElement("details");
-  const resumo = document.createElement("summary");
-  resumo.textContent = "Como executar";
-  const execucao = document.createElement("p");
-  execucao.textContent = exercicio.execucao || "Sem instruções. Pergunte ao personal.";
-  detalhes.appendChild(resumo);
-  detalhes.appendChild(execucao);
-
-  const botao = document.createElement("button");
-  botao.type = "button";
-  if (favoritos.indexOf(exercicio.id) !== -1) {
-    botao.textContent = "Favoritado";
+  // Favoritar: o clique é tratado pela lista (event delegation), por isso não tem listener aqui
+  const botaoFavorito = document.createElement("button");
+  botaoFavorito.type = "button";
+  botaoFavorito.className = "botao-favorito";
+  botaoFavorito.dataset.id = exercicio.id;
+  if (ehFavorito(exercicio.id)) {
+    botaoFavorito.textContent = "Favoritado";
   } else {
-    botao.textContent = "Favoritar";
+    botaoFavorito.textContent = "Favoritar";
   }
-  botao.addEventListener("click", function () {
-    alternarFavorito(exercicio.id);
-    desenharExercicios();
-  });
+
+  // Detalhes: o Bootstrap abre o modal sozinho por causa dos data-bs-*
+  const botaoDetalhes = document.createElement("button");
+  botaoDetalhes.type = "button";
+  botaoDetalhes.className = "botao-detalhes";
+  botaoDetalhes.textContent = "Detalhes";
+  botaoDetalhes.dataset.id = exercicio.id;
+  botaoDetalhes.setAttribute("data-bs-toggle", "modal");
+  botaoDetalhes.setAttribute("data-bs-target", "#modal-exercicio");
 
   card.appendChild(imagem);
   card.appendChild(titulo);
   card.appendChild(grupo);
   card.appendChild(descricao);
-  card.appendChild(detalhes);
-  card.appendChild(botao);
-  return card;
+  card.appendChild(botaoFavorito);
+  card.appendChild(botaoDetalhes);
+  coluna.appendChild(card);
+  return coluna;
 }
 
+// Apaga a lista e desenha tudo de novo (catálogo + exercícios criados pela pessoa)
 function desenharExercicios() {
   const lista = document.getElementById("lista-exercicios");
   lista.textContent = "";
@@ -181,6 +191,17 @@ function desenharExercicios() {
   for (let i = 0; i < todos.length; i++) {
     lista.appendChild(criarCard(todos[i]));
   }
+}
+
+// Procura um exercício pelo id, no catálogo e nos novos
+function buscarExercicio(id) {
+  const todos = catalogo.concat(novos);
+  for (let i = 0; i < todos.length; i++) {
+    if (todos[i].id === id) {
+      return todos[i];
+    }
+  }
+  return null;
 }
 
 function adicionarExercicio(evento) {
@@ -214,8 +235,39 @@ function adicionarExercicio(evento) {
   form.reset();
 }
 
-if (document.getElementById("lista-exercicios")) {
+const lista = document.getElementById("lista-exercicios");
+
+if (lista) {
   desenharExercicios();
+
+  // Um único listener no <ul>/<div> pai trata o clique de todos os botões Favoritar
+  lista.addEventListener("click", function (evento) {
+    const botao = evento.target.closest(".botao-favorito");
+    if (botao) {
+      alternarFavorito(botao.dataset.id);
+      if (ehFavorito(botao.dataset.id)) {
+        botao.textContent = "Favoritado";
+      } else {
+        botao.textContent = "Favoritar";
+      }
+    }
+  });
+}
+
+// Modal: preenche com o exercício do botão Detalhes antes de abrir
+const modal = document.getElementById("modal-exercicio");
+
+if (modal) {
+  modal.addEventListener("show.bs.modal", function (evento) {
+    const exercicio = buscarExercicio(evento.relatedTarget.dataset.id);
+    if (!exercicio) {
+      return;
+    }
+    document.getElementById("modal-titulo").textContent = exercicio.nome;
+    document.getElementById("modal-grupo").textContent = exercicio.grupo;
+    document.getElementById("modal-descricao").textContent = exercicio.descricao;
+    document.getElementById("modal-execucao").textContent = exercicio.execucao || "Sem instruções. Pergunte ao personal.";
+  });
 }
 
 const formulario = document.getElementById("form-exercicio");
