@@ -97,6 +97,24 @@ video {
   border-radius: 4px;
 }
 
+/* Estados do menu: hover muda o fundo, foco por teclado ganha contorno */
+.menu a:hover {
+  background-color: var(--destaque);
+  color: var(--branco);
+}
+
+.menu a:focus-visible,
+.marca:focus-visible,
+.botao-menu:focus-visible {
+  outline: 3px solid var(--papel);
+  outline-offset: 2px;
+}
+
+.botao-menu:hover {
+  background-color: var(--papel);
+  color: var(--tinta);
+}
+
 /* Botão hambúrguer: escondido no desktop */
 .botao-menu {
   display: none;
