@@ -4,128 +4,143 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meu Treino</title>
-  <!-- antes o navegador pedia /favicon.ico, que não existia, e gerava erro 404 no console -->
-  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
-  <!-- Bootstrap 5 via CDN (vem antes do nosso CSS, assim o nosso tem a palavra final) -->
+  <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
   <script src="js/script.js" defer></script>
 </head>
 <body>
-  <!-- a11y: antes, quem usa teclado passava pelo logo e pelo menu inteiro em toda página.
-       Agora o primeiro Tab mostra este link, que pula direto para o conteúdo -->
-  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
-
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
   <header class="topo">
     <a href="index.html" class="marca">
-      <!-- Logo em SVG inline: uma barra com anilhas. O title deixa o desenho acessível -->
       <svg class="logo" width="40" height="40" viewBox="0 0 40 40" role="img" aria-labelledby="logo-titulo">
-        <title id="logo-titulo">Logo do Meu Treino: barra com anilhas</title>
-        <rect x="1" y="13" width="5" height="14" rx="1" fill="currentColor"/>
-        <rect x="7" y="8" width="6" height="24" rx="1" fill="currentColor"/>
-        <rect x="13" y="18" width="14" height="4" fill="currentColor"/>
-        <rect x="27" y="8" width="6" height="24" rx="1" fill="currentColor"/>
-        <rect x="34" y="13" width="5" height="14" rx="1" fill="currentColor"/>
+        <title id="logo-titulo">Logotipo Meu Treino</title>
+        <rect width="40" height="40" rx="6" fill="#1d1d1b"/><rect x="3" y="14" width="4" height="12" rx="1" fill="#f3efe6"/><rect x="8" y="10" width="5" height="20" rx="1" fill="#f3efe6"/><rect x="13" y="18.5" width="14" height="3" fill="#b83a12"/><rect x="27" y="10" width="5" height="20" rx="1" fill="#f3efe6"/><rect x="33" y="14" width="4" height="12" rx="1" fill="#f3efe6"/>
       </svg>
       Meu Treino
     </a>
-    <!-- Botão do menu: só aparece no celular. aria-expanded avisa se o menu está aberto -->
-    <button class="botao-menu" type="button" aria-expanded="false" aria-controls="menu-principal">
-      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-        <rect y="3" width="20" height="2.5" fill="currentColor"/>
-        <rect y="9" width="20" height="2.5" fill="currentColor"/>
-        <rect y="15" width="20" height="2.5" fill="currentColor"/>
-      </svg>
-      Menu
-    </button>
-    <!-- a11y: antes o menu não dizia em qual página a pessoa está.
-         Agora o link da página atual tem aria-current="page" (o leitor de tela fala "página atual") -->
-    <nav class="menu" id="menu-principal" aria-label="Principal">
-      <ul>
-        <li><a href="index.html" aria-current="page">Início</a></li>
-        <li><a href="exercicios.html">Exercícios</a></li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+    <nav class="menu" id="menu-principal">
+        <a href="index.html" class="ativo" aria-current="page">Início</a>
+        <a href="exercicios.html">Exercícios</a>
+        <div class="dropdown">
+          <a href="index.html#ficha">Treinos</a>
+          <div class="submenu">
+            <a href="index.html#ficha">Ficha do dia</a>
+            <a href="index.html#cronometro">Cronômetro</a>
+          </div>
+        </div>
+        <a href="contato.html">Contato</a>
     </nav>
   </header>
 
   <main class="conteudo" id="conteudo" tabindex="-1">
-    <section class="secao abertura">
-      <p class="sobretitulo">Ficha digital de academia</p>
-      <h1>Seu treino de hoje, sem papel amassado</h1>
-      <p>Organize seus treinos de academia: veja a ficha do dia, consulte exercícios e fale com seu personal.</p>
+    <section>
+      <h1>Treino de hoje</h1>
+      <p>Ficha, exercícios e contato com o personal.</p>
+      <img src="assets/images/icone-geral.svg" alt="Ícone de barra de musculação" width="32" height="32">
+      <ul>
+        <li>Ficha do dia com volume calculado</li>
+        <li>Catálogo de exercícios com favoritos</li>
+        <li>Cronômetro de descanso e contato com o personal</li>
+      </ul>
+      <p>Referência de segurança: <a href="https://www.acsm.org/" target="_blank" rel="noopener noreferrer">ACSM (American College of Sports Medicine)</a></p>
     </section>
 
-    <section class="secao">
+    <section id="ficha">
       <h2>Ficha do dia</h2>
-      <article class="cartao">
-        <h3>Treino A: pernas, peito e costas</h3>
-        <div class="tabela-rolagem">
-          <table class="ficha" id="tabela-ficha">
-            <caption>Volume = séries × repetições × carga</caption>
-            <thead>
-              <tr>
-                <th scope="col">Exercício</th>
-                <th scope="col">Séries</th>
-                <th scope="col">Reps</th>
-                <th scope="col">Carga</th>
-                <th scope="col">Volume</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Agachamento livre</td><td>4</td><td>10</td><td>60 kg</td><td class="volume">–</td></tr>
-              <tr><td>Supino reto</td><td>4</td><td>8</td><td>40 kg</td><td class="volume">–</td></tr>
-              <tr><td>Remada curvada</td><td>3</td><td>12</td><td>35 kg</td><td class="volume">–</td></tr>
-              <tr><td>Leg press</td><td>4</td><td>12</td><td>120 kg</td><td class="volume">–</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="volume-total">Volume total do treino: <strong id="volume-total">–</strong></p>
-      </article>
+      <p>Treino A: pernas, peito e costas</p>
+      <table class="ficha">
+        <thead>
+          <tr>
+            <th>Exercício</th>
+            <th>Séries</th>
+            <th>Reps</th>
+            <th>Carga</th>
+            <th>Volume</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Agachamento livre</td><td>4</td><td>10</td><td>60 kg</td><td class="volume">–</td></tr>
+          <tr><td>Supino reto</td><td>4</td><td>8</td><td>40 kg</td><td class="volume">–</td></tr>
+          <tr><td>Remada curvada</td><td>3</td><td>12</td><td>35 kg</td><td class="volume">–</td></tr>
+          <tr><td>Leg press</td><td>4</td><td>12</td><td>120 kg</td><td class="volume">–</td></tr>
+        </tbody>
+      </table>
+      <p>Volume = séries × reps × carga</p>
+      <p class="total">Total do treino: <strong id="volume-total">–</strong></p>
+      <p id="resumo-ficha"></p>
     </section>
 
-    <!-- Cronômetro de descanso: gerado com IA (prompt reforçado) e adaptado ao projeto.
-         Ver docs/prompts-ia.md -->
-    <section class="secao" aria-labelledby="cron-titulo">
-      <h2 id="cron-titulo">Cronômetro de descanso</h2>
-      <div class="cartao cronometro text-center">
-        <!-- Número grande: escondido do leitor de tela para não ser lido a cada segundo -->
-        <p class="cron-display font-monospace" id="cron-display" aria-hidden="true">00:00</p>
-
-        <!-- Região viva: anuncia iniciar, pausar, zerar e o tempo a cada 15 segundos -->
-        <p class="visually-hidden" id="cron-status" role="status" aria-live="polite" aria-atomic="true"></p>
-
-        <div class="d-flex justify-content-center flex-wrap gap-2" role="group" aria-label="Controles do cronômetro">
-          <button type="button" class="botao botao-primario" id="btn-iniciar">Iniciar</button>
-          <button type="button" class="botao botao-secundario" id="btn-pausar" disabled>Pausar</button>
-          <button type="button" class="botao botao-secundario" id="btn-zerar" disabled>Zerar</button>
-        </div>
+    <section>
+      <h2>Grupos musculares</h2>
+      <div class="grade-grupos">
+        <article class="grupo-card">
+          <img src="assets/images/icone-pernas.svg" alt="" width="32" height="32">
+          <h3>Pernas</h3>
+          <p>Agachamento e leg press</p>
+        </article>
+        <article class="grupo-card">
+          <img src="assets/images/icone-peito.svg" alt="" width="32" height="32">
+          <h3>Peito</h3>
+          <p>Supino reto</p>
+        </article>
+        <article class="grupo-card">
+          <img src="assets/images/icone-costas.svg" alt="" width="32" height="32">
+          <h3>Costas</h3>
+          <p>Remada curvada</p>
+        </article>
+        <article class="grupo-card">
+          <img src="assets/images/icone-ombros.svg" alt="" width="32" height="32">
+          <h3>Ombros</h3>
+          <p>Desenvolvimento com halteres</p>
+        </article>
+        <article class="grupo-card">
+          <img src="assets/images/icone-bracos.svg" alt="" width="32" height="32">
+          <h3>Braços</h3>
+          <p>Rosca direta</p>
+        </article>
       </div>
     </section>
 
-    <section class="secao">
-      <h2>Ritmo do agachamento</h2>
-      <p>Assista ao vídeo e acompanhe o ritmo: 1,5 segundo descendo e 1,5 segundo subindo.</p>
-      <!-- preload="metadata": baixa só a duração e o tamanho, o vídeo carrega quando der play -->
-      <video controls preload="metadata" width="640" height="360">
+    <section>
+      <h2>Volume por exercício</h2>
+      <!-- Canvas 2D: gráfico de barras desenhado pelo script.js. O texto entre as tags é o fallback -->
+      <canvas id="grafico-volume" width="640" height="260" role="img" aria-label="Gráfico de barras do volume de cada exercício">
+        Volume por exercício: Agachamento 2400 kg, Supino 1280 kg, Remada 1260 kg e Leg press 5760 kg.
+      </canvas>
+    </section>
+
+    <section id="cronometro">
+      <h2>Cronômetro de descanso</h2>
+      <!-- aria-live: leitores de tela anunciam o tempo a cada segundo -->
+      <p class="cron-display" id="cron-display" aria-live="polite">00:00</p>
+      <button type="button" class="primario" id="btn-iniciar">Iniciar</button>
+      <button type="button" id="btn-pausar">Pausar</button>
+      <button type="button" id="btn-zerar">Zerar</button>
+    </section>
+
+    <section>
+      <h2>Vídeo do agachamento</h2>
+      <p>Desce em 1,5 segundo, sobe em 1,5 segundo.</p>
+      <!-- preload="metadata": carrega só duração e dimensões, para não gastar dados antes do clique (vídeo abaixo da dobra) -->
+      <video controls preload="metadata" width="640" poster="assets/images/agachamento-poster.jpg">
         <source src="media/agachamento.webm" type="video/webm">
         <source src="media/agachamento.mp4" type="video/mp4">
-        <!-- a11y: antes o vídeo não tinha legenda e o texto que aparece nele não chegava
-             a quem não enxerga a tela. Agora uma legenda (WebVTT) descreve o que é mostrado -->
-        <track kind="captions" src="media/agachamento-legenda.vtt" srclang="pt-BR" label="Português" default>
-        Seu navegador não reproduz vídeo. <a href="media/agachamento.mp4">Baixe o vídeo do agachamento</a>.
+        Seu navegador não reproduz vídeo.
       </video>
     </section>
 
-    <section class="secao">
+    <section>
       <h2>Bipe do descanso</h2>
-      <p>Toque o bipe para marcar o fim do intervalo entre as séries.</p>
-      <!-- preload="none": o áudio só é baixado quando a pessoa clicar em play -->
+      <p>Toca quando acabar o intervalo.</p>
+      <!-- preload="none": áudio curto e pouco usado, então nada é baixado até a pessoa dar play -->
       <audio controls preload="none">
         <source src="media/bipe-descanso.ogg" type="audio/ogg">
         <source src="media/bipe-descanso.mp3" type="audio/mpeg">
-        Seu navegador não reproduz áudio. <a href="media/bipe-descanso.mp3">Baixe o bipe</a>.
+        Seu navegador não reproduz áudio.
       </audio>
     </section>
   </main>

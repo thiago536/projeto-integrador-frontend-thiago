@@ -1,533 +1,405 @@
-/* ===== Meu Treino: folha de estilo principal ===== */
-
-/* Cores e fontes usadas no site inteiro */
+/* Variáveis: cores, espaçamento e raio ficam num lugar só */
 :root {
-  --papel: #f3efe6;
-  --papel-escuro: #e6e0d2;
-  --tinta: #1d1d1b;
-  --tinta-suave: #55524b;
-  --destaque: #b83a12;
-  --branco: #ffffff;
-  --fonte-texto: system-ui, "Segoe UI", Roboto, Arial, sans-serif;
-  --fonte-titulo: "Arial Narrow", "Roboto Condensed", "Helvetica Neue", Arial, sans-serif;
-  --fonte-numero: ui-monospace, Consolas, "Courier New", monospace;
+  --cor-escura: #222;
+  --cor-clara: #f2f2f2;
+  --cor-destaque: #b83a12;
+  --cor-borda: #ccc;
+  --espaco: 16px;
+  --raio: 4px;
 }
 
-/* Largura e altura passam a contar padding e borda */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Base da página */
 body {
-  margin: 0;
-  background-color: var(--papel);
-  color: var(--tinta);
-  font-family: var(--fonte-texto);
+  font-family: Arial, sans-serif;
+  background-color: var(--cor-clara);
+  color: var(--cor-escura);
+  /* rem: o tamanho acompanha a preferência de fonte do usuário */
   font-size: 1rem;
-  line-height: 1.6;
 }
 
-/* Títulos condensados e em caixa alta, estilo ficha de academia */
-h1,
-h2,
-h3 {
-  font-family: var(--fonte-titulo);
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  line-height: 1.1;
-  font-weight: 700; /* o Bootstrap deixa os títulos mais finos; voltamos ao negrito */
-}
-
-a {
-  color: var(--destaque);
-}
-
-/* Vídeo nunca passa da largura da tela */
-video {
-  max-width: 100%;
-  height: auto;
-}
-
-/* ===== Link "pular para o conteúdo" =====
-   a11y: fica fora da tela e aparece só quando recebe foco pelo Tab */
-.pular-conteudo {
-  position: absolute;
-  left: 16px;
-  top: -100px;
-  z-index: 1000;
-  background-color: var(--destaque);
-  color: var(--branco);
-  font-weight: 700;
-  padding: 12px 16px;
-  border-radius: 4px;
-}
-
-.pular-conteudo:focus {
-  top: 16px;
-  outline: 3px solid var(--tinta);
-  outline-offset: 2px;
-}
-
-/* o main recebe o foco quando a pessoa usa o link de pular:
-   um contorno discreto mostra para onde o foco foi */
-.conteudo:focus-visible {
-  outline: 3px dashed var(--destaque);
-  outline-offset: 4px;
-}
-
-/* ===== Cabeçalho ===== */
 .topo {
-  background-color: var(--tinta);
-  color: var(--papel);
-  padding: 12px 16px;
-  border-bottom: 6px solid var(--destaque);
-  /* flexbox: logo de um lado, menu do outro */
+  background-color: var(--cor-escura);
+  padding: 16px 32px;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  align-items: center;
 }
 
 .marca {
-  color: var(--papel);
-  font-family: var(--fonte-titulo);
-  font-size: 1.4rem;
-  font-weight: 700;
-  text-transform: uppercase;
+  color: white;
+  font-size: 1.375rem;
+  font-weight: bold;
   text-decoration: none;
   display: flex;
   align-items: center;
+}
+
+.marca img {
+  margin-right: 8px;
+}
+
+/* Combinador descendente: só os links que estão dentro do menu do topo */
+.topo .menu a:link,
+.topo .menu a:visited {
+  color: white;
+  text-decoration: none;
+  margin-left: 24px;
+}
+
+/* Ordem dos estados: :link, :visited, :hover, :active (LVHA) */
+.topo .menu a:hover {
+  text-decoration: underline;
+}
+
+.topo .menu a:active {
+  color: var(--cor-clara);
+}
+
+.conteudo {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px var(--espaco) 48px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+h1 {
+  font-size: 2.25rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--cor-escura);
+  padding-bottom: 6px;
+}
+
+/* Lista da home: bullet quadrado, com recuo para o texto não encostar na borda */
+ul {
+  list-style-type: square;
+  padding-left: 24px;
+}
+
+table {
+  width: 100%;
+  background-color: white;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+/* ID: elemento único da página (total do treino) */
+#volume-total {
+  color: var(--cor-destaque);
+}
+
+.total {
+  margin-top: var(--espaco);
+}
+
+.cron-display {
+  font-size: 3.5rem;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  margin: 8px 0 16px;
+}
+
+/* Cartão de exercício: ocupa a altura toda da coluna do Bootstrap */
+.cartao {
+  height: 100%;
+  background-color: white;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--espaco);
+  margin-bottom: var(--espaco);
+}
+
+.cartao h2 {
+  font-size: 1.25rem;
+  border-bottom: none;
+  margin: 8px 0;
+}
+
+.grupo {
+  background-color: var(--cor-escura);
+  color: white;
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 0.8125rem;
+}
+
+.modal-title {
+  font-size: 1.375rem;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+form {
+  max-width: 500px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+form button {
+  margin-top: var(--espaco);
+}
+
+button {
+  padding: 10px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.botao-favorito,
+.botao-detalhes {
+  padding: 6px 12px;
+  font-size: 0.875rem;
+}
+
+/* o X do modal é do Bootstrap: sem o padding e a margem do botão geral */
+.btn-close {
+  padding: 0;
+  margin: 0;
+}
+
+.primario {
+  background-color: var(--cor-destaque);
+  color: white;
+  border: none;
+}
+
+.rodape {
+  background-color: #ddd;
+  text-align: center;
+  padding: var(--espaco);
+  font-size: 0.875rem;
+}
+
+fieldset {
+  border: 1px solid var(--cor-borda);
+  background-color: white;
+  padding: 8px 16px 16px;
+  margin: var(--espaco) 0 0;
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 8px;
+}
+
+canvas {
+  max-width: 100%;
+  height: auto;
 }
 
 .logo {
   margin-right: 8px;
 }
 
-.menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  /* itens do menu lado a lado */
-  display: flex;
-  gap: 4px;
+/* Grade responsiva sem media query: as colunas aparecem sozinhas conforme a largura */
+.grade-grupos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--espaco);
 }
 
-.menu a {
-  color: var(--papel);
-  text-decoration: none;
-  font-weight: 600;
-  display: block;
-  padding: 8px 12px;
-  border-radius: 4px;
+.grupo-card {
+  background-color: white;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--espaco);
+  /* transform (e não top/margin) para o hover animar sem recalcular o layout */
+  transition: transform 0.2s;
 }
 
-/* Página atual: sublinhado grosso, para quem enxerga também saber onde está */
-.menu a[aria-current="page"] {
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 6px;
-  text-decoration-color: var(--destaque);
+.grupo-card:hover {
+  transform: translateY(-4px);
 }
 
-/* Estados do menu: hover muda o fundo, foco por teclado ganha contorno */
-.menu a:hover {
-  background-color: var(--destaque);
-  color: var(--branco);
+/* Pseudo-classe estrutural: cards em posição ímpar ganham a faixa de destaque */
+.grupo-card:nth-child(odd) {
+  border-left: 4px solid var(--cor-destaque);
 }
 
-.menu a:focus-visible,
-.marca:focus-visible,
-.botao-menu:focus-visible {
-  outline: 3px solid var(--papel);
-  outline-offset: 2px;
+.grupo-card h3 {
+  margin: 8px 0 4px;
+  font-size: 1.125rem;
 }
 
-.botao-menu:hover {
-  background-color: var(--papel);
-  color: var(--tinta);
-}
-
-/* Botão hambúrguer: escondido no desktop */
-.botao-menu {
-  display: none;
-  align-items: center;
-  gap: 8px;
-  background-color: transparent;
-  color: var(--papel);
-  border: 2px solid var(--papel);
-  border-radius: 4px;
-  padding: 8px 12px;
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* ===== Conteúdo ===== */
-.conteudo {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 24px 16px 48px;
-}
-
-.secao {
-  margin-bottom: 48px;
-}
-
-.abertura h1 {
-  font-size: 2.6rem;
-  margin: 0 0 12px;
-  max-width: 14ch;
-}
-
-.sobretitulo {
-  font-family: var(--fonte-numero);
-  font-size: 0.85rem;
-  color: var(--destaque);
-  margin: 0 0 8px;
-}
-
-.secao h2 {
-  font-size: 1.6rem;
-  border-bottom: 2px solid var(--tinta);
-  padding-bottom: 6px;
-}
-
-/* ===== Cartões (o nome "card" já é usado pelo Bootstrap) ===== */
-.cartao {
-  background-color: var(--branco);
-  border: 2px solid var(--tinta);
-  border-radius: 4px;
-  padding: 16px;
-  box-shadow: 4px 4px 0 var(--tinta);
-}
-
-.cartao h2,
-.cartao h3 {
-  margin-top: 0;
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.icone {
-  color: var(--destaque);
-  display: block;
-  margin-bottom: 8px;
-}
-
-/* Etiqueta do grupo muscular nos cards */
-.etiqueta {
-  display: inline-block;
-  font-family: var(--fonte-numero);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  background-color: var(--tinta);
-  color: var(--papel);
-  padding: 2px 8px;
-  border-radius: 2px;
+.grupo-card p {
   margin: 0;
 }
 
-/* As colunas da grade agora vêm do Bootstrap (row + col-12 col-md-6 col-lg-4) */
-.grade-exercicios {
-  list-style: none;
-  padding: 0;
-}
-
-.grade-exercicios .cartao {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-/* Tabela da ficha: números em fonte monoespaçada para alinhar */
-.tabela-rolagem {
-  overflow-x: auto;
-}
-
-.ficha {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-}
-
-.ficha caption {
-  text-align: left;
-  color: var(--tinta-suave);
-  font-size: 0.85rem;
-  padding-bottom: 8px;
-}
-
-.ficha th,
-.ficha td {
-  text-align: left;
-  padding: 8px 10px 8px 0;
-  border-bottom: 1px solid var(--papel-escuro);
-}
-
-.ficha td + td {
-  font-family: var(--fonte-numero);
-  white-space: nowrap;
-}
-
-.volume-total {
-  font-family: var(--fonte-numero);
-  margin: 16px 0 0;
-}
-
-.volume-total strong {
-  color: var(--destaque);
-  font-size: 1.3rem;
-}
-
-/* Botão de favoritar: estrela vazia ou cheia conforme o aria-pressed */
-.botao-favorito {
-  font: inherit;
-  font-size: 0.9rem;
-  font-weight: 600;
-  background-color: transparent;
-  color: var(--tinta);
-  border: 2px solid var(--tinta);
-  border-radius: 999px;
-  padding: 6px 14px;
-  cursor: pointer;
-}
-
-.botao-favorito::before {
-  content: "☆ ";
-}
-
-.botao-favorito[aria-pressed="true"] {
-  background-color: var(--destaque);
-  border-color: var(--destaque);
-  color: var(--branco);
-}
-
-.botao-favorito[aria-pressed="true"]::before {
-  content: "★ ";
-}
-
-.botao-favorito:focus-visible {
-  outline: 3px solid var(--destaque);
-  outline-offset: 2px;
-}
-
-/* Linha com os botões do cartão, sempre no rodapé do cartão */
-.acoes-cartao {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: auto;
-}
-
-.botao-detalhes {
-  font: inherit;
-  font-size: 0.9rem;
-  font-weight: 600;
-  background-color: transparent;
-  color: var(--destaque);
-  border: none;
-  text-decoration: underline;
-  padding: 6px 4px;
-  cursor: pointer;
-}
-
-.botao-detalhes:focus-visible {
-  outline: 3px solid var(--destaque);
-  outline-offset: 2px;
-}
-
-/* Modal do Bootstrap com a cara do site */
-.modal-content {
-  background-color: var(--papel);
-  border: 2px solid var(--tinta);
-  border-radius: 4px;
-  box-shadow: 6px 6px 0 var(--tinta);
-}
-
-.modal-title {
-  font-size: 1.5rem;
-  margin: 0;
-}
-
-.modal-body h3 {
-  font-size: 1.1rem;
-  margin-top: 16px;
-}
-
-/* ===== Cronômetro de descanso ===== */
-.cronometro {
-  max-width: 24rem;
-}
-
-.cron-display {
-  font-size: 4rem;
-  font-weight: 700;
-  line-height: 1;
-  margin: 8px 0 24px;
-}
-
-/* Botão desabilitado fica apagado e sem cursor de clique */
-.botao:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-/* ===== Formulário ===== */
-.formulario {
-  max-width: 560px;
-}
-
-/* label em cima, campo embaixo */
-.campo {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin: 0 0 18px;
-}
-
-.campo label {
-  font-weight: 600;
-}
-
-.campo input,
-.campo select,
-.campo textarea {
-  font: inherit;
-  color: var(--tinta);
-  background-color: var(--branco);
-  border: 2px solid var(--tinta);
-  border-radius: 4px;
-  padding: 10px 12px;
-  width: 100%;
-}
-
-.campo textarea {
-  resize: vertical;
-}
-
-.acoes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.botao {
-  font: inherit;
-  font-weight: 700;
-  border: 2px solid var(--tinta);
-  border-radius: 4px;
-  padding: 12px 24px;
-  cursor: pointer;
-}
-
-/* Primário (Enviar): cheio e com sombra. Secundário (Limpar): só contorno */
-.botao-primario {
-  background-color: var(--destaque);
-  border-color: var(--destaque);
-  color: var(--branco);
-  box-shadow: 3px 3px 0 var(--tinta);
-}
-
-.botao-primario:hover {
-  background-color: var(--tinta);
-  border-color: var(--tinta);
-}
-
-.botao-secundario {
-  background-color: transparent;
-  color: var(--tinta);
-}
-
-.botao-secundario:hover {
-  background-color: var(--papel-escuro);
-}
-
-/* Mensagem de retorno do formulário */
-.aviso {
-  font-weight: 600;
-  color: var(--destaque);
-  min-height: 1.6em;
-}
-
-/* Foco visível ao navegar com Tab: contorno grosso no lugar do padrão */
-.campo input:focus-visible,
-.campo select:focus-visible,
-.campo textarea:focus-visible,
-.botao:focus-visible {
-  outline: 3px solid var(--destaque);
-  outline-offset: 2px;
-}
-
-/* ===== Rodapé ===== */
-.rodape {
-  background-color: var(--papel-escuro);
-  color: var(--tinta-suave);
-  text-align: center;
-  padding: 16px;
-  font-size: 0.9rem;
-  border-top: 2px solid var(--tinta);
-}
-
-/* ===== Responsivo ===== */
-
-/* Celular (até 600px): título menor e menu ocupando a largura toda */
+/* Responsivo: em telas pequenas a barra do topo empilha em coluna */
 @media (max-width: 600px) {
-  .abertura h1 {
-    font-size: 2.2rem;
-    max-width: none;
+  .topo {
+    flex-direction: column;
+    gap: 8px;
+    padding: var(--espaco);
   }
 
-  /* tabela da ficha mais compacta para caber a coluna Volume */
-  .ficha {
-    font-size: 0.85rem;
+  .topo .menu a:link,
+  .topo .menu a:visited {
+    margin-left: 0;
+    margin-right: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  h1 {
+    font-size: 2.75rem;
+  }
+}
+
+/* Topo fixo ao rolar. z-index só disputa dentro do mesmo contexto de empilhamento;
+   o topo é o único elemento posicionado acima do conteúdo, então 10 basta */
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.topo .menu a.ativo {
+  text-decoration: underline;
+}
+
+/* Dropdown: position relative no pai; o submenu cola no pai (top: 100%) para não ter buraco no hover */
+.dropdown {
+  position: relative;
+  margin-left: 24px;
+}
+
+.dropdown > a {
+  margin-left: 0;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  flex-direction: column;
+  min-width: 180px;
+  background-color: var(--cor-escura);
+  z-index: 10;
+}
+
+.submenu a {
+  padding: 8px 16px;
+  color: white;
+  text-decoration: none;
+}
+
+.dropdown:hover .submenu,
+.dropdown:focus-within .submenu {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .menu-toggle {
+    display: block;
+    align-self: flex-end;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    margin: 0;
   }
 
-  .ficha th,
-  .ficha td {
-    padding-right: 6px;
-  }
-
-  .botao-menu {
-    display: flex;
-  }
-
-  /* menu fica escondido até o botão ser clicado */
   .menu {
     display: none;
+    flex-direction: column;
+    align-items: stretch;
     width: 100%;
   }
 
   .menu.aberto {
-    display: block;
+    display: flex;
   }
 
-  .menu ul {
-    flex-direction: column;
+  .dropdown {
+    margin-left: 0;
   }
 
-  .menu a {
-    padding: 12px;
-    border-top: 1px solid var(--tinta-suave);
+  .submenu {
+    position: static;
+    display: flex;
+  }
+
+  .submenu a {
+    padding-left: 24px;
   }
 }
 
-/* Desktop (a partir de 900px): mais respiro e 3 colunas fixas na grade */
-@media (min-width: 900px) {
-  .topo {
-    padding: 16px 32px;
-  }
+/* Faixas de volume: o JavaScript escolhe a classe, o CSS decide a aparência */
+.faixa-pesado {
+  background-color: #f6d5c8;
+  font-weight: bold;
+}
 
-  .conteudo {
-    padding: 48px 32px 64px;
-  }
+.faixa-medio {
+  background-color: #fbeee8;
+}
 
-  .abertura h1 {
-    font-size: 3.4rem;
-  }
+/* Link de pular: fica fora da tela até receber foco pelo Tab */
+.pular {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  background-color: white;
+  color: var(--cor-escura);
+  padding: 8px 16px;
+  z-index: 20;
+}
+
+.pular:focus {
+  left: 8px;
+}
+
+/* Foco visível em tudo que é interativo, sem remover o contorno */
+:focus-visible {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+/* Links do dropdown: zera a margem herdada do menu para alinhar o submenu e o item "Treinos" */
+.topo .menu .dropdown > a:link,
+.topo .menu .dropdown > a:visited,
+.topo .menu .submenu a:link,
+.topo .menu .submenu a:visited {
+  margin-left: 0;
+}
+
+video {
+  max-width: 100%;
+  height: auto;
 }

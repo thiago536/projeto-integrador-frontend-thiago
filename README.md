@@ -5,7 +5,7 @@ Nele dá para ver a ficha de treino do dia, consultar um catálogo de exercício
 marcar os exercícios favoritos e mandar uma mensagem para o personal pelo formulário de contato.
 Projeto Integrador da disciplina Desenvolvimento Front-End para Web (Cruzeiro do Sul), feito só com HTML, CSS e JavaScript.
 
-**Gráficos:** usei SVG (e não Canvas) porque o logo e os ícones são desenhos estáticos, que escalam sem perder qualidade e podem ser coloridos pelo CSS.
+**Gráficos:** o logo é SVG inline (desenho estático, escala sem perder nitidez e pode ser estilizado pelo CSS). O gráfico de volume é Canvas 2D, barras desenhadas pelo JavaScript, com texto de fallback dentro do `<canvas>`.
 
 **Componente de IA:** o cronômetro de descanso da home foi gerado com IA e adaptado. Prompts, respostas e comparação em [docs/prompts-ia.md](docs/prompts-ia.md).
 
