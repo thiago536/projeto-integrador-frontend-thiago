@@ -89,11 +89,11 @@ const catalogo = [
 ];
 
 const icones = {
-  "Pernas": "img/icone-pernas.svg",
-  "Peito": "img/icone-peito.svg",
-  "Costas": "img/icone-costas.svg",
-  "Ombros": "img/icone-ombros.svg",
-  "Braços": "img/icone-bracos.svg"
+  "Pernas": "assets/images/icone-pernas.svg",
+  "Peito": "assets/images/icone-peito.svg",
+  "Costas": "assets/images/icone-costas.svg",
+  "Ombros": "assets/images/icone-ombros.svg",
+  "Braços": "assets/images/icone-bracos.svg"
 };
 
 const CHAVE_FAVORITOS = "meuTreino.favoritos";
@@ -137,7 +137,7 @@ function criarCard(exercicio) {
   card.className = "cartao";
 
   const imagem = document.createElement("img");
-  imagem.src = icones[exercicio.grupo] || "img/icone-geral.svg";
+  imagem.src = icones[exercicio.grupo] || "assets/images/icone-geral.svg";
   imagem.width = 32;
   imagem.height = 32;
   imagem.alt = "";
