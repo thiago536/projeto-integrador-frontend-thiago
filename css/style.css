@@ -359,3 +359,13 @@ canvas {
     padding-left: 24px;
   }
 }
+
+/* Faixas de volume: o JavaScript escolhe a classe, o CSS decide a aparência */
+.faixa-pesado {
+  background-color: #f6d5c8;
+  font-weight: bold;
+}
+
+.faixa-medio {
+  background-color: #fbeee8;
+}

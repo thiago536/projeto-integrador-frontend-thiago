@@ -6,22 +6,49 @@ const treino = [
   { series: 4, reps: 12, carga: 120 }
 ];
 
+// Funções que calculam (não mexem na página e não alteram o array recebido)
+// Volume = séries x repetições x carga. multiplicador tem valor padrão 1
+function calcularVolume(exercicio, multiplicador = 1) {
+  return exercicio.series * exercicio.reps * exercicio.carga * multiplicador;
+}
+
+// Classifica o volume em três faixas e devolve o nome da classe CSS
+function classificarVolume(volume) {
+  if (volume >= 4000) {
+    return "pesado";
+  }
+  if (volume >= 2000) {
+    return "medio";
+  }
+  return "leve";
+}
+
+// Função que mexe na página: usa map, reduce e filter sobre a ficha
 function mostrarFicha() {
   const total = document.getElementById("volume-total");
+  const resumo = document.getElementById("resumo-ficha");
   if (!total) {
     return;
   }
 
   const celulas = document.getElementsByClassName("volume");
-  let soma = 0;
+  const volumes = treino.map(function (exercicio) {
+    return calcularVolume(exercicio);
+  });
+  const soma = volumes.reduce(function (acc, volume) {
+    return acc + volume;
+  }, 0);
+  const pesados = treino.filter(function (exercicio) {
+    return classificarVolume(calcularVolume(exercicio)) === "pesado";
+  });
 
-  for (let i = 0; i < treino.length; i++) {
-    const volume = treino[i].series * treino[i].reps * treino[i].carga;
-    celulas[i].textContent = volume + " kg";
-    soma = soma + volume;
+  for (let i = 0; i < volumes.length; i++) {
+    celulas[i].textContent = volumes[i] + " kg";
+    celulas[i].classList.add("faixa-" + classificarVolume(volumes[i]));
   }
 
   total.textContent = soma + " kg";
+  resumo.textContent = pesados.length + " exercício(s) em faixa pesada.";
 }
 
 mostrarFicha();
