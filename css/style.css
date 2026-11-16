@@ -369,3 +369,24 @@ canvas {
 .faixa-medio {
   background-color: #fbeee8;
 }
+
+/* Link de pular: fica fora da tela até receber foco pelo Tab */
+.pular {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  background-color: white;
+  color: var(--cor-escura);
+  padding: 8px 16px;
+  z-index: 20;
+}
+
+.pular:focus {
+  left: 8px;
+}
+
+/* Foco visível em tudo que é interativo, sem remover o contorno */
+:focus-visible {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 2px;
+}

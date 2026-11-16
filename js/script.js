@@ -228,12 +228,15 @@ function criarCard(exercicio) {
   } else {
     botaoFavorito.textContent = "Favoritar";
   }
+  // Nome acessível único: o leitor de tela diz qual exercício é, não só "Favoritar"
+  botaoFavorito.setAttribute("aria-label", botaoFavorito.textContent + " " + exercicio.nome);
 
   // Detalhes: o Bootstrap abre o modal sozinho por causa dos data-bs-*
   const botaoDetalhes = document.createElement("button");
   botaoDetalhes.type = "button";
   botaoDetalhes.className = "botao-detalhes";
   botaoDetalhes.textContent = "Detalhes";
+  botaoDetalhes.setAttribute("aria-label", "Detalhes de " + exercicio.nome);
   botaoDetalhes.dataset.id = exercicio.id;
   botaoDetalhes.setAttribute("data-bs-toggle", "modal");
   botaoDetalhes.setAttribute("data-bs-target", "#modal-exercicio");
@@ -311,11 +314,13 @@ if (lista) {
     const botao = evento.target.closest(".botao-favorito");
     if (botao) {
       alternarFavorito(botao.dataset.id);
+      const nome = buscarExercicio(botao.dataset.id).nome;
       if (ehFavorito(botao.dataset.id)) {
         botao.textContent = "Favoritado";
       } else {
         botao.textContent = "Favoritar";
       }
+      botao.setAttribute("aria-label", botao.textContent + " " + nome);
     }
   });
 }
