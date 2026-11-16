@@ -271,3 +271,91 @@ canvas {
     font-size: 2.75rem;
   }
 }
+
+/* Topo fixo ao rolar. z-index só disputa dentro do mesmo contexto de empilhamento;
+   o topo é o único elemento posicionado acima do conteúdo, então 10 basta */
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.topo .menu a.ativo {
+  text-decoration: underline;
+}
+
+/* Dropdown: position relative no pai; o submenu cola no pai (top: 100%) para não ter buraco no hover */
+.dropdown {
+  position: relative;
+  margin-left: 24px;
+}
+
+.dropdown > a {
+  margin-left: 0;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  flex-direction: column;
+  min-width: 180px;
+  background-color: var(--cor-escura);
+  z-index: 10;
+}
+
+.submenu a {
+  padding: 8px 16px;
+  color: white;
+  text-decoration: none;
+}
+
+.dropdown:hover .submenu,
+.dropdown:focus-within .submenu {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .menu-toggle {
+    display: block;
+    align-self: flex-end;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    margin: 0;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .menu.aberto {
+    display: flex;
+  }
+
+  .dropdown {
+    margin-left: 0;
+  }
+
+  .submenu {
+    position: static;
+    display: flex;
+  }
+
+  .submenu a {
+    padding-left: 24px;
+  }
+}

@@ -20,10 +20,18 @@
       </svg>
       Meu Treino
     </a>
-    <nav class="menu">
-      <a href="index.html">Início</a>
-      <a href="exercicios.html">Exercícios</a>
-      <a href="contato.html">Contato</a>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+    <nav class="menu" id="menu-principal">
+        <a href="index.html">Início</a>
+        <a href="exercicios.html" class="ativo" aria-current="page">Exercícios</a>
+        <div class="dropdown">
+          <a href="index.html#ficha">Treinos</a>
+          <div class="submenu">
+            <a href="index.html#ficha">Ficha do dia</a>
+            <a href="index.html#cronometro">Cronômetro</a>
+          </div>
+        </div>
+        <a href="contato.html">Contato</a>
     </nav>
   </header>
 

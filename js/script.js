@@ -313,3 +313,14 @@ const formulario = document.getElementById("form-exercicio");
 if (formulario) {
   formulario.addEventListener("submit", adicionarExercicio);
 }
+
+// Menu hambúrguer: abre e fecha o menu no celular e atualiza aria-expanded
+const botaoMenu = document.querySelector(".menu-toggle");
+
+if (botaoMenu) {
+  botaoMenu.addEventListener("click", function () {
+    const menu = document.getElementById("menu-principal");
+    const aberto = menu.classList.toggle("aberto");
+    botaoMenu.setAttribute("aria-expanded", aberto ? "true" : "false");
+  });
+}
