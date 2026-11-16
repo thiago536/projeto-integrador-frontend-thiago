@@ -26,6 +26,45 @@ function mostrarFicha() {
 
 mostrarFicha();
 
+// Gráfico de volume no Canvas 2D (barras). Desenho estático: limpa e desenha uma vez
+function desenharGrafico() {
+  const canvas = document.getElementById("grafico-volume");
+  if (!canvas) {
+    return;
+  }
+
+  const ctx = canvas.getContext("2d");
+  const nomes = ["Agachamento", "Supino", "Remada", "Leg press"];
+  const margem = 40;
+  const espaco = (canvas.width - margem) / treino.length;
+
+  // Maior volume da ficha define a altura de 100% das barras
+  let maior = 0;
+  for (let i = 0; i < treino.length; i++) {
+    const volume = treino[i].series * treino[i].reps * treino[i].carga;
+    if (volume > maior) {
+      maior = volume;
+    }
+  }
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.font = "14px Arial";
+
+  for (let i = 0; i < treino.length; i++) {
+    const volume = treino[i].series * treino[i].reps * treino[i].carga;
+    const altura = (volume / maior) * (canvas.height - 60);
+    const x = margem / 2 + i * espaco + espaco * 0.2;
+    const y = canvas.height - 30 - altura;
+
+    ctx.fillStyle = "#b83a12";
+    ctx.fillRect(x, y, espaco * 0.6, altura);
+    ctx.fillStyle = "#222";
+    ctx.fillText(nomes[i], x, canvas.height - 10);
+  }
+}
+
+desenharGrafico();
+
 // Cronômetro (index)
 let segundos = 0;
 let relogio = null;

@@ -13,7 +13,10 @@
 <body>
   <header class="topo">
     <a href="index.html" class="marca">
-      <img src="assets/images/logo.svg" alt="" width="40" height="40">
+      <svg class="logo" width="40" height="40" viewBox="0 0 40 40" role="img" aria-labelledby="logo-titulo">
+        <title id="logo-titulo">Logotipo Meu Treino</title>
+        <rect width="40" height="40" rx="6" fill="#1d1d1b"/><rect x="3" y="14" width="4" height="12" rx="1" fill="#f3efe6"/><rect x="8" y="10" width="5" height="20" rx="1" fill="#f3efe6"/><rect x="13" y="18.5" width="14" height="3" fill="#b83a12"/><rect x="27" y="10" width="5" height="20" rx="1" fill="#f3efe6"/><rect x="33" y="14" width="4" height="12" rx="1" fill="#f3efe6"/>
+      </svg>
       Meu Treino
     </a>
     <nav class="menu">
@@ -58,6 +61,14 @@
       </table>
       <p>Volume = séries × reps × carga</p>
       <p style="margin-top: 16px;">Total do treino: <strong id="volume-total">–</strong></p>
+    </section>
+
+    <section>
+      <h2>Volume por exercício</h2>
+      <!-- Canvas 2D: gráfico de barras desenhado pelo script.js. O texto entre as tags é o fallback -->
+      <canvas id="grafico-volume" width="640" height="260" role="img" aria-label="Gráfico de barras do volume de cada exercício">
+        Volume por exercício: Agachamento 2400 kg, Supino 1280 kg, Remada 1260 kg e Leg press 5760 kg.
+      </canvas>
     </section>
 
     <section>

@@ -179,3 +179,12 @@ legend {
   font-weight: bold;
   padding: 0 8px;
 }
+
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.logo {
+  margin-right: 8px;
+}
