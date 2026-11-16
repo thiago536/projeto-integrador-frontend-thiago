@@ -71,7 +71,8 @@
     <section>
       <h2>Vídeo do agachamento</h2>
       <p>Desce em 1,5 segundo, sobe em 1,5 segundo.</p>
-      <video controls preload="metadata" width="640">
+      <!-- preload="metadata": carrega só duração e dimensões, para não gastar dados antes do clique (vídeo abaixo da dobra) -->
+      <video controls preload="metadata" width="640" poster="assets/images/agachamento-poster.jpg">
         <source src="media/agachamento.webm" type="video/webm">
         <source src="media/agachamento.mp4" type="video/mp4">
         Seu navegador não reproduz vídeo.
@@ -81,6 +82,7 @@
     <section>
       <h2>Bipe do descanso</h2>
       <p>Toca quando acabar o intervalo.</p>
+      <!-- preload="none": áudio curto e pouco usado, então nada é baixado até a pessoa dar play -->
       <audio controls preload="none">
         <source src="media/bipe-descanso.ogg" type="audio/ogg">
         <source src="media/bipe-descanso.mp3" type="audio/mpeg">
