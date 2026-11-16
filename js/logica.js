@@ -69,7 +69,7 @@ function pedirVolumeMinimo() {
 }
 
 // Classifica o volume em 3 faixas. A ordem importa: testa a maior primeiro
-function classificarVolume(volume, volumeMinimo) {
+function classificarVolumeTreino(volume, volumeMinimo) {
   if (volume >= volumeMinimo) {
     return "Pesado";
   } else if (volume >= volumeMinimo / 2) {
@@ -153,7 +153,7 @@ function analisarTreino() {
   // for...of percorre todos os itens sem risco de errar o índice (Erro 3)
   for (const exercicio of fichaDoDia) {
     const volume = exercicio.series * exercicio.repeticoes * exercicio.carga;
-    const classe = classificarVolume(volume, volumeMinimo);
+    const classe = classificarVolumeTreino(volume, volumeMinimo);
 
     volumeTotal += volume;
 

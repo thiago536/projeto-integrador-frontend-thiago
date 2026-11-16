@@ -390,3 +390,11 @@ canvas {
   outline: 3px solid var(--cor-destaque);
   outline-offset: 2px;
 }
+
+/* Links do dropdown: zera a margem herdada do menu para alinhar o submenu e o item "Treinos" */
+.topo .menu .dropdown > a:link,
+.topo .menu .dropdown > a:visited,
+.topo .menu .submenu a:link,
+.topo .menu .submenu a:visited {
+  margin-left: 0;
+}
