@@ -216,3 +216,58 @@ canvas {
 .logo {
   margin-right: 8px;
 }
+
+/* Grade responsiva sem media query: as colunas aparecem sozinhas conforme a largura */
+.grade-grupos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--espaco);
+}
+
+.grupo-card {
+  background-color: white;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--espaco);
+  /* transform (e não top/margin) para o hover animar sem recalcular o layout */
+  transition: transform 0.2s;
+}
+
+.grupo-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Pseudo-classe estrutural: cards em posição ímpar ganham a faixa de destaque */
+.grupo-card:nth-child(odd) {
+  border-left: 4px solid var(--cor-destaque);
+}
+
+.grupo-card h3 {
+  margin: 8px 0 4px;
+  font-size: 1.125rem;
+}
+
+.grupo-card p {
+  margin: 0;
+}
+
+/* Responsivo: em telas pequenas a barra do topo empilha em coluna */
+@media (max-width: 600px) {
+  .topo {
+    flex-direction: column;
+    gap: 8px;
+    padding: var(--espaco);
+  }
+
+  .topo .menu a:link,
+  .topo .menu a:visited {
+    margin-left: 0;
+    margin-right: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  h1 {
+    font-size: 2.75rem;
+  }
+}
