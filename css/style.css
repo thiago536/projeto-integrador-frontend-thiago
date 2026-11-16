@@ -167,3 +167,15 @@ button {
   padding: 16px;
   font-size: 14px;
 }
+
+fieldset {
+  border: 1px solid #ccc;
+  background-color: white;
+  padding: 8px 16px 16px;
+  margin: 16px 0 0;
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 8px;
+}

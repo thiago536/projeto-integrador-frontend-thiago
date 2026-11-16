@@ -29,26 +29,35 @@
       <p>Fale com seu personal.</p>
 
       <form action="#" method="post">
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" name="nome" required>
+        <fieldset>
+          <legend>Seus dados</legend>
 
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" required>
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" required>
 
-        <label for="telefone">Telefone (opcional)</label>
-        <input type="tel" id="telefone" name="telefone" placeholder="(11) 91234-5678">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required>
 
-        <label for="objetivo">Objetivo</label>
-        <select id="objetivo" name="objetivo" required>
-          <option value="">Escolha</option>
-          <option value="hipertrofia">Ganhar massa</option>
-          <option value="emagrecimento">Emagrecer</option>
-          <option value="condicionamento">Condicionamento</option>
-          <option value="saude">Saúde</option>
-        </select>
+          <label for="telefone">Telefone (opcional)</label>
+          <input type="tel" id="telefone" name="telefone" placeholder="(11) 91234-5678"
+                 pattern="\(\d{2}\) \d{4,5}-\d{4}" title="Formato: (11) 91234-5678">
+        </fieldset>
 
-        <label for="mensagem">Mensagem</label>
-        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+        <fieldset>
+          <legend>Seu treino</legend>
+
+          <label for="objetivo">Objetivo</label>
+          <select id="objetivo" name="objetivo" required>
+            <option value="">Escolha</option>
+            <option value="hipertrofia">Ganhar massa</option>
+            <option value="emagrecimento">Emagrecer</option>
+            <option value="condicionamento">Condicionamento</option>
+            <option value="saude">Saúde</option>
+          </select>
+
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+        </fieldset>
 
         <button type="submit" class="primario">Enviar</button>
         <button type="reset">Limpar</button>
