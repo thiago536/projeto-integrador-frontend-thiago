@@ -1,18 +1,23 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* Variáveis: cores, espaçamento e raio ficam num lugar só */
+:root {
+  --cor-escura: #222;
+  --cor-clara: #f2f2f2;
+  --cor-destaque: #b83a12;
+  --cor-borda: #ccc;
+  --espaco: 16px;
+  --raio: 4px;
 }
 
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  color: #222;
+  background-color: var(--cor-clara);
+  color: var(--cor-escura);
+  /* rem: o tamanho acompanha a preferência de fonte do usuário */
+  font-size: 1rem;
 }
 
 .topo {
-  background-color: #222;
+  background-color: var(--cor-escura);
   padding: 16px 32px;
   display: flex;
   justify-content: space-between;
@@ -21,7 +26,7 @@ body {
 
 .marca {
   color: white;
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: bold;
   text-decoration: none;
   display: flex;
@@ -32,20 +37,27 @@ body {
   margin-right: 8px;
 }
 
-.menu a {
+/* Combinador descendente: só os links que estão dentro do menu do topo */
+.topo .menu a:link,
+.topo .menu a:visited {
   color: white;
   text-decoration: none;
   margin-left: 24px;
 }
 
-.menu a:hover {
+/* Ordem dos estados: :link, :visited, :hover, :active (LVHA) */
+.topo .menu a:hover {
   text-decoration: underline;
+}
+
+.topo .menu a:active {
+  color: var(--cor-clara);
 }
 
 .conteudo {
   max-width: 960px;
   margin: 0 auto;
-  padding: 32px 16px 48px;
+  padding: 32px var(--espaco) 48px;
 }
 
 section {
@@ -53,13 +65,19 @@ section {
 }
 
 h1 {
-  font-size: 36px;
+  font-size: 2.25rem;
 }
 
 h2 {
-  font-size: 24px;
-  border-bottom: 2px solid #222;
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--cor-escura);
   padding-bottom: 6px;
+}
+
+/* Lista da home: bullet quadrado, com recuo para o texto não encostar na borda */
+ul {
+  list-style-type: square;
+  padding-left: 24px;
 }
 
 table {
@@ -72,11 +90,20 @@ th,
 td {
   text-align: left;
   padding: 8px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+/* ID: elemento único da página (total do treino) */
+#volume-total {
+  color: var(--cor-destaque);
+}
+
+.total {
+  margin-top: var(--espaco);
 }
 
 .cron-display {
-  font-size: 56px;
+  font-size: 3.5rem;
   font-family: "Courier New", monospace;
   font-weight: bold;
   margin: 8px 0 16px;
@@ -86,27 +113,28 @@ td {
 .cartao {
   height: 100%;
   background-color: white;
-  border: 1px solid #ccc;
-  padding: 16px;
-  margin-bottom: 16px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--espaco);
+  margin-bottom: var(--espaco);
 }
 
 .cartao h2 {
-  font-size: 20px;
+  font-size: 1.25rem;
   border-bottom: none;
   margin: 8px 0;
 }
 
 .grupo {
-  background-color: #222;
+  background-color: var(--cor-escura);
   color: white;
   display: inline-block;
   padding: 2px 8px;
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 
 .modal-title {
-  font-size: 22px;
+  font-size: 1.375rem;
   border-bottom: none;
   padding-bottom: 0;
 }
@@ -127,17 +155,17 @@ select,
 textarea {
   width: 100%;
   padding: 8px;
-  font-size: 16px;
+  font-size: 1rem;
   box-sizing: border-box;
 }
 
 form button {
-  margin-top: 16px;
+  margin-top: var(--espaco);
 }
 
 button {
   padding: 10px 16px;
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
   margin-right: 8px;
   margin-bottom: 8px;
@@ -146,7 +174,7 @@ button {
 .botao-favorito,
 .botao-detalhes {
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 /* o X do modal é do Bootstrap: sem o padding e a margem do botão geral */
@@ -156,7 +184,7 @@ button {
 }
 
 .primario {
-  background-color: #b83a12;
+  background-color: var(--cor-destaque);
   color: white;
   border: none;
 }
@@ -164,15 +192,15 @@ button {
 .rodape {
   background-color: #ddd;
   text-align: center;
-  padding: 16px;
-  font-size: 14px;
+  padding: var(--espaco);
+  font-size: 0.875rem;
 }
 
 fieldset {
-  border: 1px solid #ccc;
+  border: 1px solid var(--cor-borda);
   background-color: white;
   padding: 8px 16px 16px;
-  margin: 16px 0 0;
+  margin: var(--espaco) 0 0;
 }
 
 legend {

@@ -1,0 +1,12 @@
+/* Reset: começa do zero em todos os navegadores.
+   box-sizing: border-box faz padding e border entrarem na largura declarada. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
