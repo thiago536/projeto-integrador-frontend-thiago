@@ -114,7 +114,8 @@
 
     <section id="cronometro">
       <h2>Cronômetro de descanso</h2>
-      <p class="cron-display" id="cron-display">00:00</p>
+      <!-- aria-live: leitores de tela anunciam o tempo a cada segundo -->
+      <p class="cron-display" id="cron-display" aria-live="polite">00:00</p>
       <button type="button" class="primario" id="btn-iniciar">Iniciar</button>
       <button type="button" id="btn-pausar">Pausar</button>
       <button type="button" id="btn-zerar">Zerar</button>
