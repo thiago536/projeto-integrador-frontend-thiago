@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meu Treino</title>
   <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
   <script src="js/script.js" defer></script>
 </head>
 <body>
@@ -52,6 +50,7 @@
     <section id="ficha">
       <h2>Ficha do dia</h2>
       <p>Treino A: pernas, peito e costas</p>
+      <p class="aviso-saude"><strong>Atenção:</strong> as cargas desta ficha são exemplos. Siga sempre a orientação do seu profissional de Educação Física.</p>
       <table class="ficha">
         <thead>
           <tr>
@@ -115,8 +114,9 @@
 
     <section id="cronometro">
       <h2>Cronômetro de descanso</h2>
-      <!-- aria-live: leitores de tela anunciam o tempo a cada segundo -->
-      <p class="cron-display" id="cron-display" aria-live="polite">00:00</p>
+      <p class="cron-display" id="cron-display">00:00</p>
+      <!-- aria-live só neste aviso: o leitor de tela fala ao iniciar, pausar e zerar, e não a cada segundo -->
+      <p class="visualmente-oculto" id="cron-aviso" aria-live="polite"></p>
       <button type="button" class="primario" id="btn-iniciar">Iniciar</button>
       <button type="button" id="btn-pausar">Pausar</button>
       <button type="button" id="btn-zerar">Zerar</button>

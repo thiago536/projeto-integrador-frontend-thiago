@@ -35,9 +35,12 @@ Primeira adaptação (Aula 13):
 - Corrigi o anúncio a cada 15 s: o original podia repetir o mesmo segundo. Agora guardo o último segundo anunciado em `ultimoAnuncio`.
 - Movi o JavaScript para o `js/script.js` (que já carrega com `defer`).
 
-Simplificação posterior (versão atual do site):
+Simplificação posterior:
 
-- Tirei do cronômetro o `aria-live`, o `role` e a classe `visually-hidden`. Ficou só com `setInterval` de 1 em 1 segundo, `formata`, `mostrarTempo`, `iniciar`, `pausar` e `zerar`.
-- Os botões ficam sempre ativos (sem `disabled`).
-- O site roda só em tela de computador.
-- O Bootstrap continua no site (CDN), para as grades e o modal da página de exercícios.
+- Tirei a IIFE, o `disabled` dos botões e a classe `visually-hidden` do Bootstrap. Ficou só com `setInterval` de 1 em 1 segundo, `formata`, `mostrarTempo`, `iniciar`, `pausar` e `zerar`.
+
+Versão atual do site (projeto final):
+
+- O `aria-live` saiu do display (ele fazia o leitor de tela falar o tempo a cada segundo) e foi para um aviso escondido, `#cron-aviso`, preenchido pela função `anunciar()` só ao iniciar, pausar e zerar. É a mesma ideia do prompt reforçado, mais simples.
+- O site é responsivo (menu hambúrguer até 600 px).
+- O Bootstrap (CDN) só carrega em `exercicios.html`, que usa a grade e o modal.
