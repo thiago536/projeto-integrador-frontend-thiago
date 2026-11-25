@@ -109,6 +109,11 @@ function mostrarTempo() {
   document.getElementById("cron-display").textContent = formata(min) + ":" + formata(seg);
 }
 
+// Avisa o leitor de tela só nos momentos importantes (o display não tem aria-live)
+function anunciar(texto) {
+  document.getElementById("cron-aviso").textContent = texto;
+}
+
 function iniciar() {
   if (relogio !== null) {
     return;
@@ -117,17 +122,24 @@ function iniciar() {
     segundos = segundos + 1;
     mostrarTempo();
   }, 1000);
+  anunciar("Cronômetro iniciado.");
 }
 
 function pausar() {
+  if (relogio === null) {
+    return;
+  }
   clearInterval(relogio);
   relogio = null;
+  anunciar("Pausado em " + Math.floor(segundos / 60) + " minuto(s) e " + (segundos % 60) + " segundo(s).");
 }
 
 function zerar() {
-  pausar();
+  clearInterval(relogio);
+  relogio = null;
   segundos = 0;
   mostrarTempo();
+  anunciar("Cronômetro zerado.");
 }
 
 const btnIniciar = document.getElementById("btn-iniciar");
@@ -165,12 +177,17 @@ const icones = {
 const CHAVE_FAVORITOS = "meuTreino.favoritos";
 const CHAVE_NOVOS = "meuTreino.personalizados";
 
+// try/catch: se o dado salvo estiver corrompido (ou o navegador bloquear o localStorage), a página não quebra
 function lerLista(chave) {
-  const salvo = localStorage.getItem(chave);
-  if (salvo === null) {
+  try {
+    const salvo = localStorage.getItem(chave);
+    if (salvo === null) {
+      return [];
+    }
+    return JSON.parse(salvo);
+  } catch (erro) {
     return [];
   }
-  return JSON.parse(salvo);
 }
 
 function salvarLista(chave, lista) {
@@ -344,6 +361,18 @@ if (modal) {
 const formulario = document.getElementById("form-exercicio");
 if (formulario) {
   formulario.addEventListener("submit", adicionarExercicio);
+}
+
+// Contato: o formulário é demonstrativo, então só confirma na tela que nada foi enviado
+const formContato = document.getElementById("form-contato");
+
+if (formContato) {
+  formContato.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+    document.getElementById("aviso-contato").textContent =
+      "Formulário demonstrativo: sua mensagem não foi enviada. Fale com o personal pessoalmente.";
+    formContato.reset();
+  });
 }
 
 // Menu hambúrguer: abre e fecha o menu no celular e atualiza aria-expanded

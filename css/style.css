@@ -403,3 +403,25 @@ video {
   max-width: 100%;
   height: auto;
 }
+
+/* No topo escuro o contorno laranja fica com contraste 2,77:1 (WCAG pede 3:1); branco resolve */
+.topo :focus-visible {
+  outline-color: white;
+}
+
+/* Aviso de saúde e de formulário demonstrativo */
+.aviso-saude {
+  background-color: #fbeee8;
+  border-left: 4px solid var(--cor-destaque);
+  padding: 8px 12px;
+}
+
+/* Some da tela, mas continua sendo lido pelo leitor de tela */
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
